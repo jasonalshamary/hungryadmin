@@ -1,2 +1,634 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>A Pelican Blog</title><link href="/" rel="alternate"></link><link href="/feeds/all.atom.xml" rel="self"></link><id>/</id><updated>2013-09-08T04:57:54Z</updated></feed>
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Hungry Admin</title><link href="/" rel="alternate"></link><link href="/feeds/all.atom.xml" rel="self"></link><id>/</id><updated>2013-09-05T00:00:00+02:00</updated><entry><title>Building a static blog and deploying it with SaltStack</title><link href="/building-a-static-blog-and-deploying-it-with-saltstack.html" rel="alternate"></link><updated>2013-09-05T00:00:00+02:00</updated><author><name>Forrest Alvarez</name></author><id>tag:,2013-09-05:building-a-static-blog-and-deploying-it-with-saltstack.html</id><summary type="html">&lt;p&gt;I'll be discussing the setup of the blog with this initial post, the main focus will be on the usage of SaltStack.&lt;/p&gt;
+&lt;p&gt;Our setup is going to consist of the following:&lt;/p&gt;
+&lt;p&gt;1 droplet from DigitalOcean (Ubuntu).&lt;/p&gt;
+&lt;p&gt;Our static blog (Pelican) running through nginx and a virtualenv.&lt;/p&gt;
+&lt;p&gt;Saltstack pulling in our server configuration.&lt;/p&gt;
+&lt;p&gt;So basically the configuration is going to go like this:&lt;/p&gt;
+&lt;ol class="arabic simple"&gt;
+&lt;li&gt;Spin up your droplet (I'm using Ubuntu, but the salt states I'm using should support multiple distros).&lt;/li&gt;
+&lt;li&gt;Install salt.&lt;/li&gt;
+&lt;li&gt;Use salt to perform the rest of the setup.&lt;/li&gt;
+&lt;li&gt;From there it's all blog content related.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;Our first step is to get salt installed:&lt;/p&gt;
+&lt;p&gt;We'll be going through the steps here: &lt;a class="reference external" href="http://docs.saltstack.com/topics/installation/ubuntu.html"&gt;http://docs.saltstack.com/topics/installation/ubuntu.html&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;For Ubuntu you may or may not need to install the following package, check if you have the 'add-apt-repository' command, I did not:&lt;/p&gt;
+&lt;p&gt;apt-get install python-software-properties&lt;/p&gt;
+&lt;p&gt;For me this still didn't provide it, so I had to run&lt;/p&gt;
+&lt;p&gt;apt-get install add-software-properties-common and I was all set to go.&lt;/p&gt;
+&lt;p&gt;Ok now I had the add-apt-repository command available I added the saltstack repo: add-apt-repository ppa:saltstack/salt&lt;/p&gt;
+&lt;p&gt;Since we're just going to have one server here, we're going to configure it as a masterless minion:&lt;/p&gt;
+&lt;p&gt;&lt;a class="reference external" href="http://docs.saltstack.com/topics/tutorials/quickstart.html"&gt;http://docs.saltstack.com/topics/tutorials/quickstart.html&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;So we'll start by installing just the salt-minion with:&lt;/p&gt;
+&lt;p&gt;apt-get install salt-minion.&lt;/p&gt;
+&lt;p&gt;Now I like to run a quick test here to make sure things are working properly, so lets install nginx real quick.&lt;/p&gt;
+&lt;p&gt;If you're following along in the quickstart for the masterless minion, scroll down near the bottom and follow their creation with a few slight modifications (we'll update this later once we have the structure all fleshed out):&lt;/p&gt;
+&lt;p&gt;/sr/salt/top.sls:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="l-Scalar-Plain"&gt;base&lt;/span&gt;&lt;span class="p-Indicator"&gt;:&lt;/span&gt;
+  &lt;span class="s"&gt;&amp;#39;*&amp;#39;&lt;/span&gt;&lt;span class="p-Indicator"&gt;:&lt;/span&gt;
+    &lt;span class="p-Indicator"&gt;-&lt;/span&gt; &lt;span class="l-Scalar-Plain"&gt;webserver&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;/srv/salt/webserver.sls&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="l-Scalar-Plain"&gt;nginx&lt;/span&gt;&lt;span class="p-Indicator"&gt;:&lt;/span&gt;
+  &lt;span class="l-Scalar-Plain"&gt;pkg&lt;/span&gt;&lt;span class="p-Indicator"&gt;:&lt;/span&gt;
+    &lt;span class="p-Indicator"&gt;-&lt;/span&gt; &lt;span class="l-Scalar-Plain"&gt;installed&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Ok now that those are saved, just run salt-call --local state.highstate -l debug, it should look like the following:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="nb"&gt;local&lt;/span&gt;:
+----------
+    State: - pkg
+    Name:      nginx
+    Function:  installed
+        Result:    True
+        Comment:   Package nginx installed
+        Changes:   libgd2: &lt;span class="o"&gt;{&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;new&amp;#39;&lt;/span&gt;: &lt;span class="s1"&gt;&amp;#39;1&amp;#39;&lt;/span&gt;, &lt;span class="s1"&gt;&amp;#39;old&amp;#39;&lt;/span&gt;: &lt;span class="s1"&gt;&amp;#39;&amp;#39;&lt;/span&gt;&lt;span class="o"&gt;}&lt;/span&gt;
+                   httpd: &lt;span class="o"&gt;{&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;new&amp;#39;&lt;/span&gt;: &lt;span class="s1"&gt;&amp;#39;1&amp;#39;&lt;/span&gt;, &lt;span class="s1"&gt;&amp;#39;old&amp;#39;&lt;/span&gt;: &lt;span class="s1"&gt;&amp;#39;&amp;#39;&lt;/span&gt;&lt;span class="o"&gt;}&lt;/span&gt;
+                   nginx-common: &lt;span class="o"&gt;{&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;new&amp;#39;&lt;/span&gt;: &lt;span class="s1"&gt;&amp;#39;1.2.6-1ubuntu3.2&amp;#39;&lt;/span&gt;, &lt;span class="s1"&gt;&amp;#39;old&amp;#39;&lt;/span&gt;: &lt;span class="s1"&gt;&amp;#39;&amp;#39;&lt;/span&gt;&lt;span class="o"&gt;}&lt;/span&gt;
+                   nginx-full: &lt;span class="o"&gt;{&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;new&amp;#39;&lt;/span&gt;: &lt;span class="s1"&gt;&amp;#39;1.2.6-1ubuntu3.2&amp;#39;&lt;/span&gt;, &lt;span class="s1"&gt;&amp;#39;old&amp;#39;&lt;/span&gt;: &lt;span class="s1"&gt;&amp;#39;&amp;#39;&lt;/span&gt;&lt;span class="o"&gt;}&lt;/span&gt;
+                   nginx: &lt;span class="o"&gt;{&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;new&amp;#39;&lt;/span&gt;: &lt;span class="s1"&gt;&amp;#39;1.2.6-1ubuntu3.2&amp;#39;&lt;/span&gt;, &lt;span class="s1"&gt;&amp;#39;old&amp;#39;&lt;/span&gt;: &lt;span class="s1"&gt;&amp;#39;&amp;#39;&lt;/span&gt;&lt;span class="o"&gt;}&lt;/span&gt;
+                   libxslt1.1: &lt;span class="o"&gt;{&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;new&amp;#39;&lt;/span&gt;: &lt;span class="s1"&gt;&amp;#39;1.1.27-1ubuntu2&amp;#39;&lt;/span&gt;, &lt;span class="s1"&gt;&amp;#39;old&amp;#39;&lt;/span&gt;: &lt;span class="s1"&gt;&amp;#39;&amp;#39;&lt;/span&gt;&lt;span class="o"&gt;}&lt;/span&gt;
+                   libjpeg-turbo8: &lt;span class="o"&gt;{&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;new&amp;#39;&lt;/span&gt;: &lt;span class="s1"&gt;&amp;#39;1.2.1-0ubuntu2&amp;#39;&lt;/span&gt;, &lt;span class="s1"&gt;&amp;#39;old&amp;#39;&lt;/span&gt;: &lt;span class="s1"&gt;&amp;#39;&amp;#39;&lt;/span&gt;&lt;span class="o"&gt;}&lt;/span&gt;
+                   libgd2-noxpm: &lt;span class="o"&gt;{&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;new&amp;#39;&lt;/span&gt;: &lt;span class="s1"&gt;&amp;#39;2.0.36~rc1~dfsg-6.1ubuntu1&amp;#39;&lt;/span&gt;, &lt;span class="s1"&gt;&amp;#39;old&amp;#39;&lt;/span&gt;: &lt;span class="s1"&gt;&amp;#39;&amp;#39;&lt;/span&gt;&lt;span class="o"&gt;}&lt;/span&gt;
+                   libjpeg8: &lt;span class="o"&gt;{&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;new&amp;#39;&lt;/span&gt;: &lt;span class="s1"&gt;&amp;#39;8c-2ubuntu7&amp;#39;&lt;/span&gt;, &lt;span class="s1"&gt;&amp;#39;old&amp;#39;&lt;/span&gt;: &lt;span class="s1"&gt;&amp;#39;&amp;#39;&lt;/span&gt;&lt;span class="o"&gt;}&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Awesome, so now nginx is installed by salt.&lt;/p&gt;
+&lt;p&gt;Now there are a few things we're going to want to configure here, and a few items we'll have to modify later as we go through setting up the blog itself.&lt;/p&gt;
+&lt;p&gt;The first thing I want to do is install fail2ban. So lets create that sls&lt;/p&gt;
+&lt;p&gt;/srv/salt/fail2ban.sls&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="l-Scalar-Plain"&gt;fail2ban&lt;/span&gt;&lt;span class="p-Indicator"&gt;:&lt;/span&gt;
+  &lt;span class="l-Scalar-Plain"&gt;pkg&lt;/span&gt;&lt;span class="p-Indicator"&gt;:&lt;/span&gt;
+    &lt;span class="p-Indicator"&gt;-&lt;/span&gt; &lt;span class="l-Scalar-Plain"&gt;installed&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;and lets update our top.sls again so this gets included:&lt;/p&gt;
+&lt;p&gt;/srv/salt/top.sls:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="l-Scalar-Plain"&gt;base&lt;/span&gt;&lt;span class="p-Indicator"&gt;:&lt;/span&gt;
+  &lt;span class="s"&gt;&amp;#39;*&amp;#39;&lt;/span&gt;&lt;span class="p-Indicator"&gt;:&lt;/span&gt;
+    &lt;span class="p-Indicator"&gt;-&lt;/span&gt; &lt;span class="l-Scalar-Plain"&gt;webserver&lt;/span&gt;
+    &lt;span class="p-Indicator"&gt;-&lt;/span&gt; &lt;span class="l-Scalar-Plain"&gt;fail2ban&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Ok lets run our highstate again: salt-call --local state.highstate -l debug&lt;/p&gt;
+&lt;p&gt;And you should see output like this:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="nb"&gt;local&lt;/span&gt;:
+----------
+    State: - pkg
+    Name:      fail2ban
+    Function:  installed
+        Result:    True
+        Comment:   Package fail2ban installed
+        Changes:   python2.7-pyinotify: &lt;span class="o"&gt;{&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;new&amp;#39;&lt;/span&gt;: &lt;span class="s1"&gt;&amp;#39;1&amp;#39;&lt;/span&gt;, &lt;span class="s1"&gt;&amp;#39;old&amp;#39;&lt;/span&gt;: &lt;span class="s1"&gt;&amp;#39;&amp;#39;&lt;/span&gt;&lt;span class="o"&gt;}&lt;/span&gt;
+                   python-pyinotify: &lt;span class="o"&gt;{&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;new&amp;#39;&lt;/span&gt;: &lt;span class="s1"&gt;&amp;#39;0.9.3-1.1ubuntu1&amp;#39;&lt;/span&gt;, &lt;span class="s1"&gt;&amp;#39;old&amp;#39;&lt;/span&gt;: &lt;span class="s1"&gt;&amp;#39;&amp;#39;&lt;/span&gt;&lt;span class="o"&gt;}&lt;/span&gt;
+                   fail2ban: &lt;span class="o"&gt;{&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;new&amp;#39;&lt;/span&gt;: &lt;span class="s1"&gt;&amp;#39;0.8.7.1-1&amp;#39;&lt;/span&gt;, &lt;span class="s1"&gt;&amp;#39;old&amp;#39;&lt;/span&gt;: &lt;span class="s1"&gt;&amp;#39;&amp;#39;&lt;/span&gt;&lt;span class="o"&gt;}&lt;/span&gt;
+
+----------
+    State: - pkg
+    Name:      nginx
+    Function:  installed
+        Result:    True
+        Comment:   Package nginx is already installed
+        Changes:
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;great, now fail2ban will be installed, by default the service starts but let's make sure it does. Modify your /srv/salt/fail2ban.sls to look like this:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="l-Scalar-Plain"&gt;fail2ban&lt;/span&gt;&lt;span class="p-Indicator"&gt;:&lt;/span&gt;
+  &lt;span class="l-Scalar-Plain"&gt;pkg&lt;/span&gt;&lt;span class="p-Indicator"&gt;:&lt;/span&gt;
+    &lt;span class="p-Indicator"&gt;-&lt;/span&gt; &lt;span class="l-Scalar-Plain"&gt;installed&lt;/span&gt;
+  &lt;span class="l-Scalar-Plain"&gt;service&lt;/span&gt;&lt;span class="p-Indicator"&gt;:&lt;/span&gt;
+    &lt;span class="p-Indicator"&gt;-&lt;/span&gt; &lt;span class="l-Scalar-Plain"&gt;running&lt;/span&gt;
+    &lt;span class="p-Indicator"&gt;-&lt;/span&gt; &lt;span class="l-Scalar-Plain"&gt;watch&lt;/span&gt;&lt;span class="p-Indicator"&gt;:&lt;/span&gt;
+      &lt;span class="p-Indicator"&gt;-&lt;/span&gt; &lt;span class="l-Scalar-Plain"&gt;file&lt;/span&gt;&lt;span class="p-Indicator"&gt;:&lt;/span&gt; &lt;span class="l-Scalar-Plain"&gt;/etc/fail2ban/fail2ban.conf&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;So we'll get details back on our other items, but what we're focusing on is this:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;----------
+    State: - service
+    Name:      fail2ban
+    Function:  running
+        Result:    False
+        Comment:   The following requisites were not found:
+                   watch: &lt;span class="o"&gt;{&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;file&amp;#39;&lt;/span&gt;: &lt;span class="s1"&gt;&amp;#39;/etc/fail2ban/fail2ban.conf&amp;#39;&lt;/span&gt;&lt;span class="o"&gt;}&lt;/span&gt;
+
+        Changes:
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Now you can see the result here is 'false', does that mean things failed? Let's modify the fail2ban.conf and see. Odd, after adding a line to the fail2ban.conf file I still get the following:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;----------
+    State: - service
+    Name:      fail2ban
+    Function:  running
+        Result:    False
+        Comment:   The following requisites were not found:
+                   watch: &lt;span class="o"&gt;{&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;file&amp;#39;&lt;/span&gt;: &lt;span class="s1"&gt;&amp;#39;/etc/fail2ban/fail2ban.conf&amp;#39;&lt;/span&gt;&lt;span class="o"&gt;}&lt;/span&gt;
+
+        Changes:
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Ok lets modify our fail2ban.sls to just require the package, let's also add a require on the service to ensure it tries to start after fail2ban is installed. (this isn't required in 0.17 and forward since they process in order, but it's nice to have):&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="l-Scalar-Plain"&gt;fail2ban&lt;/span&gt;&lt;span class="p-Indicator"&gt;:&lt;/span&gt;
+  &lt;span class="l-Scalar-Plain"&gt;pkg&lt;/span&gt;&lt;span class="p-Indicator"&gt;:&lt;/span&gt;
+    &lt;span class="p-Indicator"&gt;-&lt;/span&gt; &lt;span class="l-Scalar-Plain"&gt;installed&lt;/span&gt;
+  &lt;span class="l-Scalar-Plain"&gt;service&lt;/span&gt;&lt;span class="p-Indicator"&gt;:&lt;/span&gt;
+    &lt;span class="p-Indicator"&gt;-&lt;/span&gt; &lt;span class="l-Scalar-Plain"&gt;running&lt;/span&gt;
+    &lt;span class="p-Indicator"&gt;-&lt;/span&gt; &lt;span class="l-Scalar-Plain"&gt;watch&lt;/span&gt;&lt;span class="p-Indicator"&gt;:&lt;/span&gt;
+      &lt;span class="p-Indicator"&gt;-&lt;/span&gt; &lt;span class="l-Scalar-Plain"&gt;pkg&lt;/span&gt;&lt;span class="p-Indicator"&gt;:&lt;/span&gt; &lt;span class="l-Scalar-Plain"&gt;fail2ban&lt;/span&gt;
+    &lt;span class="p-Indicator"&gt;-&lt;/span&gt; &lt;span class="l-Scalar-Plain"&gt;require&lt;/span&gt;&lt;span class="p-Indicator"&gt;:&lt;/span&gt;
+      &lt;span class="p-Indicator"&gt;-&lt;/span&gt; &lt;span class="l-Scalar-Plain"&gt;pkg&lt;/span&gt;&lt;span class="p-Indicator"&gt;:&lt;/span&gt; &lt;span class="l-Scalar-Plain"&gt;fail2ban&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Now things are looking better:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;----------
+    State: - service
+    Name:      fail2ban
+    Function:  running
+        Result:    True
+        Comment:   The service fail2ban is already running
+        Changes:
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;So why did this fail before? The reason it fails is because salt doesn't understand that we want to modify the fail2ban.conf, because we didn't declare it inside of the fail2ban.sls. Imagine it like someone has handed you a stack of papers, each with a number on them. They then ask you to find a numbered paper to read them the details on, well they call out 7, and you sort through the stack of papers, but you don't have that paper! How can you provide details about something you don't possess or have in your hand? It's exactly the same with Salt, if you don't say 'hey this is the file, this is the content', and then tell it to watch that file for changes, it doesn't know what to do because it doesn't think the file exists! Since we don't have anything specific going on inside the fail2ban.conf, we aren't going to modify it.&lt;/p&gt;
+&lt;p&gt;What we DO need to modify however is the ssh_config file, so we can change the port, and disable root login for security purposes. So lets start by creating an ssh directory for salt, we don't want to clog up our main directory, we'll move the other content as well, and change the naming scheme to better represent both the files, and to meet the requirements salt has set.&lt;/p&gt;
+&lt;p&gt;First lets make some directories for our existing content, create the following:&lt;/p&gt;
+&lt;p&gt;mkdir /srv/salt/fail2ban
+mkdir /srv/salt/nginx
+mkdir /srv/salt/ssh&lt;/p&gt;
+&lt;p&gt;Now move the files:&lt;/p&gt;
+&lt;p&gt;mv /srv/salt/fail2ban.sls /srv/salt/fail2ban/init.sls&lt;/p&gt;
+&lt;p&gt;mv /srv/salt/webserver.sls /srv/salt/nginx/init.sls&lt;/p&gt;
+&lt;p&gt;cp /etc/ssh/ssh_config /srv/salt/ssh/ssh_config&lt;/p&gt;
+&lt;p&gt;Now you're thinking to yourself 'woah woah woah, why did this guy change the file names to inits??'. The reasoning behind this is now that they're no longer in top level directories, we still want them to get applied, and the init just inherits the name of the directory, which is great for having a base file that would get configured everywhere.&lt;/p&gt;
+&lt;p&gt;So just to make sure we didn't break anything, let's run our highstate again:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;salt-call --local state.highstate -l debug
+
+&lt;span class="nb"&gt;local&lt;/span&gt;:
+----------
+    State: - pkg
+    Name:      fail2ban
+    Function:  installed
+        Result:    True
+        Comment:   Package fail2ban is already installed
+        Changes:
+----------
+    State: - service
+    Name:      fail2ban
+    Function:  running
+        Result:    True
+        Comment:   The service fail2ban is already running
+        Changes:
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Wait a second where did nginx go? Remember how we moved webserver.sls to be init.sls in the nginx dir? Well we didn't update our top.sls, so lets do that now:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="l-Scalar-Plain"&gt;base&lt;/span&gt;&lt;span class="p-Indicator"&gt;:&lt;/span&gt;
+  &lt;span class="s"&gt;&amp;#39;*&amp;#39;&lt;/span&gt;&lt;span class="p-Indicator"&gt;:&lt;/span&gt;
+    &lt;span class="p-Indicator"&gt;-&lt;/span&gt; &lt;span class="l-Scalar-Plain"&gt;nginx&lt;/span&gt;
+    &lt;span class="p-Indicator"&gt;-&lt;/span&gt; &lt;span class="l-Scalar-Plain"&gt;fail2ban&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Lets run the highstate again:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="nb"&gt;local&lt;/span&gt;:
+----------
+    State: - pkg
+    Name:      fail2ban
+    Function:  installed
+        Result:    True
+        Comment:   Package fail2ban is already installed
+        Changes:
+----------
+    State: - pkg
+    Name:      nginx
+    Function:  installed
+        Result:    True
+        Comment:   Package nginx is already installed
+        Changes:
+----------
+    State: - service
+    Name:      fail2ban
+    Function:  running
+        Result:    True
+        Comment:   The service fail2ban is already running
+        Changes:
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Awesome, now things are looking a lot better! Lets move on to managing our sshd_config. I'm going to assume familiarity with the sshd_config, I've modified the default port, as well as the ability for root to login, modify whatever you want, and let's create our init.sls:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="l-Scalar-Plain"&gt;ssh&lt;/span&gt;&lt;span class="p-Indicator"&gt;:&lt;/span&gt;
+  &lt;span class="l-Scalar-Plain"&gt;pkg&lt;/span&gt;&lt;span class="p-Indicator"&gt;:&lt;/span&gt;
+    &lt;span class="p-Indicator"&gt;-&lt;/span&gt; &lt;span class="l-Scalar-Plain"&gt;installed&lt;/span&gt;
+  &lt;span class="l-Scalar-Plain"&gt;service&lt;/span&gt;&lt;span class="p-Indicator"&gt;:&lt;/span&gt;
+    &lt;span class="p-Indicator"&gt;-&lt;/span&gt; &lt;span class="l-Scalar-Plain"&gt;running&lt;/span&gt;
+    &lt;span class="p-Indicator"&gt;-&lt;/span&gt; &lt;span class="l-Scalar-Plain"&gt;require&lt;/span&gt;&lt;span class="p-Indicator"&gt;:&lt;/span&gt;
+      &lt;span class="p-Indicator"&gt;-&lt;/span&gt; &lt;span class="l-Scalar-Plain"&gt;pkg&lt;/span&gt;&lt;span class="p-Indicator"&gt;:&lt;/span&gt; &lt;span class="l-Scalar-Plain"&gt;ssh&lt;/span&gt;
+    &lt;span class="p-Indicator"&gt;-&lt;/span&gt; &lt;span class="l-Scalar-Plain"&gt;watch&lt;/span&gt;&lt;span class="p-Indicator"&gt;:&lt;/span&gt;
+      &lt;span class="p-Indicator"&gt;-&lt;/span&gt; &lt;span class="l-Scalar-Plain"&gt;file&lt;/span&gt;&lt;span class="p-Indicator"&gt;:&lt;/span&gt; &lt;span class="l-Scalar-Plain"&gt;/etc/ssh/ssd_config&lt;/span&gt;
+
+
+&lt;span class="l-Scalar-Plain"&gt;/etc/ssh/sshd_config&lt;/span&gt;&lt;span class="p-Indicator"&gt;:&lt;/span&gt;
+  &lt;span class="l-Scalar-Plain"&gt;file&lt;/span&gt;&lt;span class="p-Indicator"&gt;:&lt;/span&gt;
+    &lt;span class="p-Indicator"&gt;-&lt;/span&gt; &lt;span class="l-Scalar-Plain"&gt;managed&lt;/span&gt;
+    &lt;span class="p-Indicator"&gt;-&lt;/span&gt; &lt;span class="l-Scalar-Plain"&gt;source&lt;/span&gt;&lt;span class="p-Indicator"&gt;:&lt;/span&gt; &lt;span class="l-Scalar-Plain"&gt;salt://ssh/sshd_config&lt;/span&gt;
+    &lt;span class="p-Indicator"&gt;-&lt;/span&gt; &lt;span class="l-Scalar-Plain"&gt;mode&lt;/span&gt;&lt;span class="p-Indicator"&gt;:&lt;/span&gt; &lt;span class="s"&gt;&amp;#39;0644&amp;#39;&lt;/span&gt;
+    &lt;span class="p-Indicator"&gt;-&lt;/span&gt; &lt;span class="l-Scalar-Plain"&gt;user&lt;/span&gt;&lt;span class="p-Indicator"&gt;:&lt;/span&gt; &lt;span class="l-Scalar-Plain"&gt;root&lt;/span&gt;
+    &lt;span class="p-Indicator"&gt;-&lt;/span&gt; &lt;span class="l-Scalar-Plain"&gt;group&lt;/span&gt;&lt;span class="p-Indicator"&gt;:&lt;/span&gt; &lt;span class="l-Scalar-Plain"&gt;root&lt;/span&gt;
+    &lt;span class="p-Indicator"&gt;-&lt;/span&gt; &lt;span class="l-Scalar-Plain"&gt;require&lt;/span&gt;&lt;span class="p-Indicator"&gt;:&lt;/span&gt;
+      &lt;span class="p-Indicator"&gt;-&lt;/span&gt; &lt;span class="l-Scalar-Plain"&gt;pkg&lt;/span&gt;&lt;span class="p-Indicator"&gt;:&lt;/span&gt; &lt;span class="l-Scalar-Plain"&gt;ssh&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Ok we've done quite a bit here, so we install the package. We ensure the service is running, that the requires are in place, and we're watching our ssh_config file. We also set up the ssh_config so that all our changes get applied properly. You'll notice that I've put single quotes around the mode, due to the way YAML is formatted, you can't have a leading 0 or it treats the value like a hexedecimal value, so just wrap it in single quotes. Let's see what our output looks like now:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="nb"&gt;local&lt;/span&gt;:
+----------
+    State: - pkg
+    Name:      ssh
+    Function:  installed
+        Result:    True
+        Comment:   Package ssh is already installed
+        Changes:
+----------
+    State: - file
+    Name:      /etc/ssh/sshd_config
+    Function:  managed
+        Result:    True
+        Comment:   File /etc/ssh/sshd_config is in the correct state
+        Changes:
+----------
+    State: - pkg
+    Name:      fail2ban
+    Function:  installed
+        Result:    True
+        Comment:   Package fail2ban is already installed
+        Changes:
+----------
+    State: - pkg
+    Name:      nginx
+    Function:  installed
+        Result:    True
+        Comment:   Package nginx is already installed
+        Changes:
+----------
+    State: - service
+    Name:      fail2ban
+    Function:  running
+        Result:    True
+        Comment:   The service fail2ban is already running
+        Changes:
+----------
+    State: - service
+    Name:      ssh
+    Function:  running
+        Result:    True
+        Comment:   The service ssh is already running
+        Changes:
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Awesome, so everything seems to be going well, lets modify our /srv/salt/ssh/sshd_config for fun (I'm just going to add a comment), and re-run the highstate with salt-call --local state.highstate -l debug:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="nb"&gt;local&lt;/span&gt;:
+----------
+    State: - pkg
+    Name:      ssh
+    Function:  installed
+        Result:    True
+        Comment:   Package ssh is already installed
+        Changes:
+----------
+    State: - file
+    Name:      /etc/ssh/sshd_config
+    Function:  managed
+        Result:    True
+        Comment:   File /etc/ssh/sshd_config updated
+        Changes:   diff: ---
++++
+@@ -15,6 +15,7 @@
+ &lt;span class="c"&gt;# Site-wide defaults for some commonly used options.  For a comprehensive&lt;/span&gt;
+ &lt;span class="c"&gt;# list of available options, their meanings and defaults, please see the&lt;/span&gt;
+ &lt;span class="c"&gt;# ssh_config(5) man page.&lt;/span&gt;
++#  &lt;span class="nb"&gt;test&lt;/span&gt;
+
+&lt;span class="nb"&gt; &lt;/span&gt;Host *
+ &lt;span class="c"&gt;#   ForwardAgent no&lt;/span&gt;
+
+
+----------
+    State: - pkg
+    Name:      fail2ban
+    Function:  installed
+        Result:    True
+        Comment:   Package fail2ban is already installed
+        Changes:
+----------
+    State: - pkg
+    Name:      nginx
+    Function:  installed
+        Result:    True
+        Comment:   Package nginx is already installed
+        Changes:
+----------
+    State: - service
+    Name:      fail2ban
+    Function:  running
+        Result:    True
+        Comment:   The service fail2ban is already running
+        Changes:
+----------
+    State: - service
+    Name:      ssh
+    Function:  running
+        Result:    True
+        Comment:   Service restarted
+        Changes:   ssh: True
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;You can see that we've added that comment line, and then the service was restarted because it's watching the ssh_config file, just like we wanted! Now modify that back, no reason to waste a comment line. Ok, so we've got ssh locked down in some fashion, nginx is installed, and we've fail2ban installed as well. We've already got python installed, but we're missing things like virtualenv which are key.&lt;/p&gt;
+&lt;p&gt;Let's create /srv/salt/python/ so we can get Python and the other associated items configured (and we can show more cool salt stuff). So we're going to start breaking things out here. Let's pretend for a second this isn't a single machine, but an environment. You wouldn't want to install setuptools on a machine that only needs python would you? No of course not, so we break out our /srv/salt/python/ directory into two files for right now, the first is /srv/salt/python/init.sls, it looks like this:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="l-Scalar-Plain"&gt;python&lt;/span&gt;&lt;span class="p-Indicator"&gt;:&lt;/span&gt;
+  &lt;span class="l-Scalar-Plain"&gt;pkg&lt;/span&gt;&lt;span class="p-Indicator"&gt;:&lt;/span&gt;
+    &lt;span class="p-Indicator"&gt;-&lt;/span&gt; &lt;span class="l-Scalar-Plain"&gt;installed&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Super easy right? Just make sure python is installed.&lt;/p&gt;
+&lt;p&gt;Let's get pip installed as well, let's make another sls. This may seem verbose, but for the time being it isn't a lot of work and we want to keep each item seperate. So create a pip.sls&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="l-Scalar-Plain"&gt;python-pip&lt;/span&gt;&lt;span class="p-Indicator"&gt;:&lt;/span&gt;
+  &lt;span class="l-Scalar-Plain"&gt;pkg&lt;/span&gt;&lt;span class="p-Indicator"&gt;:&lt;/span&gt;
+    &lt;span class="p-Indicator"&gt;-&lt;/span&gt; &lt;span class="l-Scalar-Plain"&gt;installed&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;And modify the top.sls again:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="l-Scalar-Plain"&gt;base&lt;/span&gt;&lt;span class="p-Indicator"&gt;:&lt;/span&gt;
+&lt;span class="s"&gt;&amp;#39;*&amp;#39;&lt;/span&gt;&lt;span class="p-Indicator"&gt;:&lt;/span&gt;
+  &lt;span class="p-Indicator"&gt;-&lt;/span&gt; &lt;span class="l-Scalar-Plain"&gt;nginx&lt;/span&gt;
+  &lt;span class="p-Indicator"&gt;-&lt;/span&gt; &lt;span class="l-Scalar-Plain"&gt;fail2ban&lt;/span&gt;
+  &lt;span class="p-Indicator"&gt;-&lt;/span&gt; &lt;span class="l-Scalar-Plain"&gt;ssh&lt;/span&gt;
+  &lt;span class="p-Indicator"&gt;-&lt;/span&gt; &lt;span class="l-Scalar-Plain"&gt;python.pip&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Run our salt-call --local state.highstate -l debug again and we get this nice big wall of spam:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;State: - pkg
+Name:      python-pip
+Function:  installed
+    Result:    True
+    Comment:   Package python-pip installed
+    Changes:   build-essential: &lt;span class="o"&gt;{&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;new&amp;#39;&lt;/span&gt;: &lt;span class="s1"&gt;&amp;#39;11.6ubuntu4&amp;#39;&lt;/span&gt;, &lt;span class="s1"&gt;&amp;#39;old&amp;#39;&lt;/span&gt;: &lt;span class="s1"&gt;&amp;#39;&amp;#39;&lt;/span&gt;&lt;span class="o"&gt;}&lt;/span&gt;
+               c++-compiler: &lt;span class="o"&gt;{&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;new&amp;#39;&lt;/span&gt;: &lt;span class="s1"&gt;&amp;#39;1&amp;#39;&lt;/span&gt;, &lt;span class="s1"&gt;&amp;#39;old&amp;#39;&lt;/span&gt;: &lt;span class="s1"&gt;&amp;#39;&amp;#39;&lt;/span&gt;&lt;span class="o"&gt;}&lt;/span&gt;
+               libmpfr4: &lt;span class="o"&gt;{&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;new&amp;#39;&lt;/span&gt;: &lt;span class="s1"&gt;&amp;#39;3.1.1-1&amp;#39;&lt;/span&gt;, &lt;span class="s1"&gt;&amp;#39;old&amp;#39;&lt;/span&gt;: &lt;span class="s1"&gt;&amp;#39;&amp;#39;&lt;/span&gt;&lt;span class="o"&gt;}&lt;/span&gt;
+               libppl-c4: &lt;span class="o"&gt;{&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;new&amp;#39;&lt;/span&gt;: &lt;span class="s1"&gt;&amp;#39;1.0-1ubuntu2&amp;#39;&lt;/span&gt;, &lt;span class="s1"&gt;&amp;#39;old&amp;#39;&lt;/span&gt;: &lt;span class="s1"&gt;&amp;#39;&amp;#39;&lt;/span&gt;&lt;span class="o"&gt;}&lt;/span&gt;
+               libalgorithm-merge-perl: &lt;span class="o"&gt;{&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;new&amp;#39;&lt;/span&gt;: &lt;span class="s1"&gt;&amp;#39;0.08-2&amp;#39;&lt;/span&gt;, &lt;span class="s1"&gt;&amp;#39;old&amp;#39;&lt;/span&gt;: &lt;span class="s1"&gt;&amp;#39;&amp;#39;&lt;/span&gt;&lt;span class="o"&gt;}&lt;/span&gt;
+               dpkg-dev: &lt;span class="o"&gt;{&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;new&amp;#39;&lt;/span&gt;: &lt;span class="s1"&gt;&amp;#39;1.16.10ubuntu1&amp;#39;&lt;/span&gt;, &lt;span class="s1"&gt;&amp;#39;old&amp;#39;&lt;/span&gt;: &lt;span class="s1"&gt;&amp;#39;&amp;#39;&lt;/span&gt;&lt;span class="o"&gt;}&lt;/span&gt;
+               linux-libc-dev: &lt;span class="o"&gt;{&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;new&amp;#39;&lt;/span&gt;: &lt;span class="s1"&gt;&amp;#39;3.8.0-29.42&amp;#39;&lt;/span&gt;, &lt;span class="s1"&gt;&amp;#39;old&amp;#39;&lt;/span&gt;: &lt;span class="s1"&gt;&amp;#39;&amp;#39;&lt;/span&gt;&lt;span class="o"&gt;}&lt;/span&gt;
+               cpp-4.7: &lt;span class="o"&gt;{&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;new&amp;#39;&lt;/span&gt;: &lt;span class="s1"&gt;&amp;#39;4.7.3-1ubuntu1&amp;#39;&lt;/span&gt;, &lt;span class="s1"&gt;&amp;#39;old&amp;#39;&lt;/span&gt;: &lt;span class="s1"&gt;&amp;#39;&amp;#39;&lt;/span&gt;&lt;span class="o"&gt;}&lt;/span&gt;
+               libalgorithm-diff-xs-perl: &lt;span class="o"&gt;{&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;new&amp;#39;&lt;/span&gt;: &lt;span class="s1"&gt;&amp;#39;0.04-2build3&amp;#39;&lt;/span&gt;, &lt;span class="s1"&gt;&amp;#39;old&amp;#39;&lt;/span&gt;: &lt;span class="s1"&gt;&amp;#39;&amp;#39;&lt;/span&gt;&lt;span class="o"&gt;}&lt;/span&gt;
+               gcc: &lt;span class="o"&gt;{&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;new&amp;#39;&lt;/span&gt;: &lt;span class="s1"&gt;&amp;#39;4:4.7.3-1ubuntu10&amp;#39;&lt;/span&gt;, &lt;span class="s1"&gt;&amp;#39;old&amp;#39;&lt;/span&gt;: &lt;span class="s1"&gt;&amp;#39;&amp;#39;&lt;/span&gt;&lt;span class="o"&gt;}&lt;/span&gt;
+               make: &lt;span class="o"&gt;{&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;new&amp;#39;&lt;/span&gt;: &lt;span class="s1"&gt;&amp;#39;3.81-8.2ubuntu2&amp;#39;&lt;/span&gt;, &lt;span class="s1"&gt;&amp;#39;old&amp;#39;&lt;/span&gt;: &lt;span class="s1"&gt;&amp;#39;&amp;#39;&lt;/span&gt;&lt;span class="o"&gt;}&lt;/span&gt;
+               libitm1: &lt;span class="o"&gt;{&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;new&amp;#39;&lt;/span&gt;: &lt;span class="s1"&gt;&amp;#39;4.7.3-1ubuntu1&amp;#39;&lt;/span&gt;, &lt;span class="s1"&gt;&amp;#39;old&amp;#39;&lt;/span&gt;: &lt;span class="s1"&gt;&amp;#39;&amp;#39;&lt;/span&gt;&lt;span class="o"&gt;}&lt;/span&gt;
+               libquadmath0: &lt;span class="o"&gt;{&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;new&amp;#39;&lt;/span&gt;: &lt;span class="s1"&gt;&amp;#39;4.7.3-1ubuntu1&amp;#39;&lt;/span&gt;, &lt;span class="s1"&gt;&amp;#39;old&amp;#39;&lt;/span&gt;: &lt;span class="s1"&gt;&amp;#39;&amp;#39;&lt;/span&gt;&lt;span class="o"&gt;}&lt;/span&gt;
+               libfile-fcntllock-perl: &lt;span class="o"&gt;{&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;new&amp;#39;&lt;/span&gt;: &lt;span class="s1"&gt;&amp;#39;0.14-2&amp;#39;&lt;/span&gt;, &lt;span class="s1"&gt;&amp;#39;old&amp;#39;&lt;/span&gt;: &lt;span class="s1"&gt;&amp;#39;&amp;#39;&lt;/span&gt;&lt;span class="o"&gt;}&lt;/span&gt;
+               c-compiler: &lt;span class="o"&gt;{&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;new&amp;#39;&lt;/span&gt;: &lt;span class="s1"&gt;&amp;#39;1&amp;#39;&lt;/span&gt;, &lt;span class="s1"&gt;&amp;#39;old&amp;#39;&lt;/span&gt;: &lt;span class="s1"&gt;&amp;#39;&amp;#39;&lt;/span&gt;&lt;span class="o"&gt;}&lt;/span&gt;
+               g++: &lt;span class="o"&gt;{&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;new&amp;#39;&lt;/span&gt;: &lt;span class="s1"&gt;&amp;#39;4:4.7.3-1ubuntu10&amp;#39;&lt;/span&gt;, &lt;span class="s1"&gt;&amp;#39;old&amp;#39;&lt;/span&gt;: &lt;span class="s1"&gt;&amp;#39;&amp;#39;&lt;/span&gt;&lt;span class="o"&gt;}&lt;/span&gt;
+               libcloog-ppl1: &lt;span class="o"&gt;{&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;new&amp;#39;&lt;/span&gt;: &lt;span class="s1"&gt;&amp;#39;0.16.1-1&amp;#39;&lt;/span&gt;, &lt;span class="s1"&gt;&amp;#39;old&amp;#39;&lt;/span&gt;: &lt;span class="s1"&gt;&amp;#39;&amp;#39;&lt;/span&gt;&lt;span class="o"&gt;}&lt;/span&gt;
+               libgcc-4.7-dev: &lt;span class="o"&gt;{&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;new&amp;#39;&lt;/span&gt;: &lt;span class="s1"&gt;&amp;#39;4.7.3-1ubuntu1&amp;#39;&lt;/span&gt;, &lt;span class="s1"&gt;&amp;#39;old&amp;#39;&lt;/span&gt;: &lt;span class="s1"&gt;&amp;#39;&amp;#39;&lt;/span&gt;&lt;span class="o"&gt;}&lt;/span&gt;
+               libmpc2: &lt;span class="o"&gt;{&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;new&amp;#39;&lt;/span&gt;: &lt;span class="s1"&gt;&amp;#39;0.9-4build1&amp;#39;&lt;/span&gt;, &lt;span class="s1"&gt;&amp;#39;old&amp;#39;&lt;/span&gt;: &lt;span class="s1"&gt;&amp;#39;&amp;#39;&lt;/span&gt;&lt;span class="o"&gt;}&lt;/span&gt;
+               libdpkg-perl: &lt;span class="o"&gt;{&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;new&amp;#39;&lt;/span&gt;: &lt;span class="s1"&gt;&amp;#39;1.16.10ubuntu1&amp;#39;&lt;/span&gt;, &lt;span class="s1"&gt;&amp;#39;old&amp;#39;&lt;/span&gt;: &lt;span class="s1"&gt;&amp;#39;&amp;#39;&lt;/span&gt;&lt;span class="o"&gt;}&lt;/span&gt;
+               libstdc++-dev: &lt;span class="o"&gt;{&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;new&amp;#39;&lt;/span&gt;: &lt;span class="s1"&gt;&amp;#39;1&amp;#39;&lt;/span&gt;, &lt;span class="s1"&gt;&amp;#39;old&amp;#39;&lt;/span&gt;: &lt;span class="s1"&gt;&amp;#39;&amp;#39;&lt;/span&gt;&lt;span class="o"&gt;}&lt;/span&gt;
+               libc6-dev: &lt;span class="o"&gt;{&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;new&amp;#39;&lt;/span&gt;: &lt;span class="s1"&gt;&amp;#39;2.17-0ubuntu5&amp;#39;&lt;/span&gt;, &lt;span class="s1"&gt;&amp;#39;old&amp;#39;&lt;/span&gt;: &lt;span class="s1"&gt;&amp;#39;&amp;#39;&lt;/span&gt;&lt;span class="o"&gt;}&lt;/span&gt;
+               libstdc++6-4.7-dev: &lt;span class="o"&gt;{&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;new&amp;#39;&lt;/span&gt;: &lt;span class="s1"&gt;&amp;#39;4.7.3-1ubuntu1&amp;#39;&lt;/span&gt;, &lt;span class="s1"&gt;&amp;#39;old&amp;#39;&lt;/span&gt;: &lt;span class="s1"&gt;&amp;#39;&amp;#39;&lt;/span&gt;&lt;span class="o"&gt;}&lt;/span&gt;
+               libc-dev-bin: &lt;span class="o"&gt;{&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;new&amp;#39;&lt;/span&gt;: &lt;span class="s1"&gt;&amp;#39;2.17-0ubuntu5&amp;#39;&lt;/span&gt;, &lt;span class="s1"&gt;&amp;#39;old&amp;#39;&lt;/span&gt;: &lt;span class="s1"&gt;&amp;#39;&amp;#39;&lt;/span&gt;&lt;span class="o"&gt;}&lt;/span&gt;
+               manpages-dev: &lt;span class="o"&gt;{&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;new&amp;#39;&lt;/span&gt;: &lt;span class="s1"&gt;&amp;#39;3.44-0ubuntu1&amp;#39;&lt;/span&gt;, &lt;span class="s1"&gt;&amp;#39;old&amp;#39;&lt;/span&gt;: &lt;span class="s1"&gt;&amp;#39;&amp;#39;&lt;/span&gt;&lt;span class="o"&gt;}&lt;/span&gt;
+               python-pip: &lt;span class="o"&gt;{&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;new&amp;#39;&lt;/span&gt;: &lt;span class="s1"&gt;&amp;#39;1.3.1-0ubuntu1&amp;#39;&lt;/span&gt;, &lt;span class="s1"&gt;&amp;#39;old&amp;#39;&lt;/span&gt;: &lt;span class="s1"&gt;&amp;#39;&amp;#39;&lt;/span&gt;&lt;span class="o"&gt;}&lt;/span&gt;
+               libalgorithm-diff-perl: &lt;span class="o"&gt;{&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;new&amp;#39;&lt;/span&gt;: &lt;span class="s1"&gt;&amp;#39;1.19.02-3&amp;#39;&lt;/span&gt;, &lt;span class="s1"&gt;&amp;#39;old&amp;#39;&lt;/span&gt;: &lt;span class="s1"&gt;&amp;#39;&amp;#39;&lt;/span&gt;&lt;span class="o"&gt;}&lt;/span&gt;
+               libppl12: &lt;span class="o"&gt;{&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;new&amp;#39;&lt;/span&gt;: &lt;span class="s1"&gt;&amp;#39;1.0-1ubuntu2&amp;#39;&lt;/span&gt;, &lt;span class="s1"&gt;&amp;#39;old&amp;#39;&lt;/span&gt;: &lt;span class="s1"&gt;&amp;#39;&amp;#39;&lt;/span&gt;&lt;span class="o"&gt;}&lt;/span&gt;
+               gcc-4.7: &lt;span class="o"&gt;{&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;new&amp;#39;&lt;/span&gt;: &lt;span class="s1"&gt;&amp;#39;4.7.3-1ubuntu1&amp;#39;&lt;/span&gt;, &lt;span class="s1"&gt;&amp;#39;old&amp;#39;&lt;/span&gt;: &lt;span class="s1"&gt;&amp;#39;&amp;#39;&lt;/span&gt;&lt;span class="o"&gt;}&lt;/span&gt;
+               linux-kernel-headers: &lt;span class="o"&gt;{&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;new&amp;#39;&lt;/span&gt;: &lt;span class="s1"&gt;&amp;#39;1&amp;#39;&lt;/span&gt;, &lt;span class="s1"&gt;&amp;#39;old&amp;#39;&lt;/span&gt;: &lt;span class="s1"&gt;&amp;#39;&amp;#39;&lt;/span&gt;&lt;span class="o"&gt;}&lt;/span&gt;
+               patch: &lt;span class="o"&gt;{&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;new&amp;#39;&lt;/span&gt;: &lt;span class="s1"&gt;&amp;#39;2.6.1-3ubuntu2&amp;#39;&lt;/span&gt;, &lt;span class="s1"&gt;&amp;#39;old&amp;#39;&lt;/span&gt;: &lt;span class="s1"&gt;&amp;#39;&amp;#39;&lt;/span&gt;&lt;span class="o"&gt;}&lt;/span&gt;
+               c++abi2-dev: &lt;span class="o"&gt;{&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;new&amp;#39;&lt;/span&gt;: &lt;span class="s1"&gt;&amp;#39;1&amp;#39;&lt;/span&gt;, &lt;span class="s1"&gt;&amp;#39;old&amp;#39;&lt;/span&gt;: &lt;span class="s1"&gt;&amp;#39;&amp;#39;&lt;/span&gt;&lt;span class="o"&gt;}&lt;/span&gt;
+               fakeroot: &lt;span class="o"&gt;{&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;new&amp;#39;&lt;/span&gt;: &lt;span class="s1"&gt;&amp;#39;1.18.4-2ubuntu1&amp;#39;&lt;/span&gt;, &lt;span class="s1"&gt;&amp;#39;old&amp;#39;&lt;/span&gt;: &lt;span class="s1"&gt;&amp;#39;&amp;#39;&lt;/span&gt;&lt;span class="o"&gt;}&lt;/span&gt;
+               libc-dev: &lt;span class="o"&gt;{&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;new&amp;#39;&lt;/span&gt;: &lt;span class="s1"&gt;&amp;#39;1&amp;#39;&lt;/span&gt;, &lt;span class="s1"&gt;&amp;#39;old&amp;#39;&lt;/span&gt;: &lt;span class="s1"&gt;&amp;#39;&amp;#39;&lt;/span&gt;&lt;span class="o"&gt;}&lt;/span&gt;
+               cpp: &lt;span class="o"&gt;{&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;new&amp;#39;&lt;/span&gt;: &lt;span class="s1"&gt;&amp;#39;4:4.7.3-1ubuntu10&amp;#39;&lt;/span&gt;, &lt;span class="s1"&gt;&amp;#39;old&amp;#39;&lt;/span&gt;: &lt;span class="s1"&gt;&amp;#39;&amp;#39;&lt;/span&gt;&lt;span class="o"&gt;}&lt;/span&gt;
+               g++-4.7: &lt;span class="o"&gt;{&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;new&amp;#39;&lt;/span&gt;: &lt;span class="s1"&gt;&amp;#39;4.7.3-1ubuntu1&amp;#39;&lt;/span&gt;, &lt;span class="s1"&gt;&amp;#39;old&amp;#39;&lt;/span&gt;: &lt;span class="s1"&gt;&amp;#39;&amp;#39;&lt;/span&gt;&lt;span class="o"&gt;}&lt;/span&gt;
+               libgmpxx4ldbl: &lt;span class="o"&gt;{&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;new&amp;#39;&lt;/span&gt;: &lt;span class="s1"&gt;&amp;#39;2:5.0.5+dfsg-2ubuntu3&amp;#39;&lt;/span&gt;, &lt;span class="s1"&gt;&amp;#39;old&amp;#39;&lt;/span&gt;: &lt;span class="s1"&gt;&amp;#39;&amp;#39;&lt;/span&gt;&lt;span class="o"&gt;}&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Great so pip is now installed on our server.&lt;/p&gt;
+&lt;p&gt;Ok so we've got pip installed, lets get virtualenv taken care of. This is just a copy of our pip.sls, so copy it over: cp /srv/salt/python/pip.sls /srv/salt/python/virtualenv.sls, it should look like this:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="l-Scalar-Plain"&gt;python-virtualenv&lt;/span&gt;&lt;span class="p-Indicator"&gt;:&lt;/span&gt;
+  &lt;span class="l-Scalar-Plain"&gt;pkg&lt;/span&gt;&lt;span class="p-Indicator"&gt;:&lt;/span&gt;
+    &lt;span class="p-Indicator"&gt;-&lt;/span&gt; &lt;span class="l-Scalar-Plain"&gt;installed&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Let's modify our top.sls to look like this (add virtualenv, and get rid of pip for the time being):&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="l-Scalar-Plain"&gt;base&lt;/span&gt;&lt;span class="p-Indicator"&gt;:&lt;/span&gt;
+  &lt;span class="s"&gt;&amp;#39;*&amp;#39;&lt;/span&gt;&lt;span class="p-Indicator"&gt;:&lt;/span&gt;
+    &lt;span class="p-Indicator"&gt;-&lt;/span&gt; &lt;span class="l-Scalar-Plain"&gt;nginx&lt;/span&gt;
+    &lt;span class="p-Indicator"&gt;-&lt;/span&gt; &lt;span class="l-Scalar-Plain"&gt;fail2ban&lt;/span&gt;
+    &lt;span class="p-Indicator"&gt;-&lt;/span&gt; &lt;span class="l-Scalar-Plain"&gt;ssh&lt;/span&gt;
+    &lt;span class="p-Indicator"&gt;-&lt;/span&gt; &lt;span class="l-Scalar-Plain"&gt;python.virtualenv&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Let's run it with salt-call --local state.highstate -l debug again:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;  State: - pkg
+  Name:      python-virtualenv
+  Function:  installed
+      Result:    True
+      Comment:   The following packages were installed/updated: python-virtualenv.
+      Changes:   python-virtualenv: &lt;span class="o"&gt;{&lt;/span&gt; new : 1.9.1-0ubuntu1
+old :
+&lt;span class="o"&gt;}&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Next we want to install git, so create /srv/salt/git/init.sls (you'll need to create the directory), and we'll populate our file with the following:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="l-Scalar-Plain"&gt;git&lt;/span&gt;&lt;span class="p-Indicator"&gt;:&lt;/span&gt;
+  &lt;span class="l-Scalar-Plain"&gt;pkg&lt;/span&gt;&lt;span class="p-Indicator"&gt;:&lt;/span&gt;
+    &lt;span class="p-Indicator"&gt;-&lt;/span&gt; &lt;span class="l-Scalar-Plain"&gt;installed&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Easy enough stuff, at some point we'll look at coming back to make this OS agnostic, but for now we don't want to get too crazy.&lt;/p&gt;
+&lt;p&gt;Now you might be thinking &amp;quot;Don't we need to add this to our top.sls?&amp;quot;, well we're not going to worry about that, because we'll be making some drastic changes shortly.&lt;/p&gt;
+&lt;p&gt;Ok we have virtualenv installed, and git to pull down our content. So the next step is to add our project, let's make a new directory: /srv/salt/hungryadmin, and create app.sls. Now the reason we're doing this is we want items like python/virtualenv.sls, and ngingx/init.sls to just be our DEFAULT items, so you could apply it to any server in our environment (if we had more than one). From here we can extend things, so I could have multiple subdirectories (maybe I host multiple static blogs, or a code repo, or anything), that have different applications running in them. So lets set up our static blog in the app.sls:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;{% set hungryadmin_venv = salt[&amp;#39;pillar.get&amp;#39;](&amp;#39;hungryadmin:venv&amp;#39;) %}
+{% set hungryadmin_proj = salt[&amp;#39;pillar.get&amp;#39;](&amp;#39;hungryadmin:proj&amp;#39;) %}
+{% set hungryadmin_user = salt[&amp;#39;pillar.get&amp;#39;](&amp;#39;hungryadmin:user&amp;#39;) %}
+
+include:
+  - git
+  - python.pip
+  - python.virtualenv
+
+hungryadmin_venv:
+  virtualenv:
+    - managed
+    - name: {{ hungryadmin_venv }}
+    - runas: {{ hungryadmin_user }}
+    - require:
+      - pkg: python-virtualenv
+
+hungryadmin:
+  git:
+    - latest
+    - name: https://github.com/gravyboat/hungryadmin.git
+    - target: {{ hungryadmin_proj }}
+    - runas: {{ hungryadmin_user }}
+    - force: True
+    - require:
+      - pkg: git
+      - virtualenv: hungryadmin_venv
+
+hungryadmin_pkgs:
+  pip:
+    - installed
+    - bin_env {{ hungryadmin_venv }}
+    - requirements: {{ hungryadmin_proj }}/requirements.txt
+    - require:
+      - git: hugrnyadmin
+      - pkg: python-pip
+      - virtualenv: hugryadmin_venv
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Ok, so we've now got an app.sls that's going to take care of a lot of things. Now I know you're thinking &amp;quot;what is all this pillar crap that he's using?&amp;quot;, well we are going to get to that in a minute, the key thing here is that you understand what each of these items do, it's pretty easy to tell right? for the hungryadmin_venv variable, it's clearly the location of our virtual environment, and our hungryadmin_user, is simply our user for the virtual environment. The only slightly confusing one here is hungryadmin_proj, but even that we figure it out. We know we're going to pull our git content into the virtual environment right? So we know it has something to do with that.&lt;/p&gt;
+&lt;p&gt;Next let's modify our top.sls so it looks like this:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="l-Scalar-Plain"&gt;base&lt;/span&gt;&lt;span class="p-Indicator"&gt;:&lt;/span&gt;
+  &lt;span class="s"&gt;&amp;#39;*&amp;#39;&lt;/span&gt;&lt;span class="p-Indicator"&gt;:&lt;/span&gt;
+    &lt;span class="p-Indicator"&gt;-&lt;/span&gt; &lt;span class="l-Scalar-Plain"&gt;nginx&lt;/span&gt;
+    &lt;span class="p-Indicator"&gt;-&lt;/span&gt; &lt;span class="l-Scalar-Plain"&gt;fail2ban&lt;/span&gt;
+    &lt;span class="p-Indicator"&gt;-&lt;/span&gt; &lt;span class="l-Scalar-Plain"&gt;ssh&lt;/span&gt;
+    &lt;span class="p-Indicator"&gt;-&lt;/span&gt; &lt;span class="l-Scalar-Plain"&gt;hungryadmin.app&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;So why aren't we including git, or any of the python content any longer? Because we don't need to! We've already included them in the app.sls for hungryadmin, so there's no need to include them again. Now that we've modified the top.sls lets take care of those variables I had earlier. So those values (as you can see when I defined them) are pillar values. Now the best way to think of pillar data is really just global variables, it's the first thing that the salt team state in the pillar docs, and it makes the most sense. So let's get the pillar data going. Create the following files:&lt;/p&gt;
+&lt;p&gt;/srv/pillar/top.sls
+/srv/pillar/hungryadmin.sls&lt;/p&gt;
+&lt;p&gt;and populate them with this data:&lt;/p&gt;
+&lt;p&gt;/srv/pillar/top.sls:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="l-Scalar-Plain"&gt;base&lt;/span&gt;&lt;span class="p-Indicator"&gt;:&lt;/span&gt;
+  &lt;span class="s"&gt;&amp;#39;*&amp;#39;&lt;/span&gt;&lt;span class="p-Indicator"&gt;:&lt;/span&gt;
+    &lt;span class="p-Indicator"&gt;-&lt;/span&gt; &lt;span class="l-Scalar-Plain"&gt;hungryadmin&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;/srv/pillar/hungryadmin.sls:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;# hungryadmin environment settings
+
+{% set hungryadmin_user = &amp;#39;woody&amp;#39; %}
+{% set hungryadmin_venv = &amp;#39;/home/{0}/hungryadmin&amp;#39;.format(hungryadmin_user) %}
+{% set hungryadmin_proj = &amp;#39;{0}/site&amp;#39;.format(hungryadmin_venv) %}
+{% set hungryadmin_url = &amp;#39;hungryadmin.com&amp;#39; %}
+{% set hungryadmin_root = &amp;#39;{0}/output&amp;#39;.format(hungryadmin_proj) %}
+
+hungryadmin:
+  user: {{ hungryadmin_user }}
+  venv: {{ hungryadmin_venv }}
+  proj: {{ hungryadmin_proj }}
+  url: {{ hungryadmin_url }}
+  root: {{ hungryadmin_root }}
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;OK so basically what we've just done is say 'hey for all servers, load in these pillar files', that happens in the top.sls. Then in the hungryadmin.sls, we set our variables, so we can reference them like hungryadmin_user which will return 'woody' and so on. If we wanted we could add another section for other items.&lt;/p&gt;
+&lt;p&gt;Now that we have this done, we need to tell salt where to look for our pillar data. To do this edit the /etc/salt/minion (since we aren't using a master in this configuration), find the line that mentions pillar root:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="c"&gt;#pillar_roots:&lt;/span&gt;
+&lt;span class="c"&gt;#base:&lt;/span&gt;
+&lt;span class="c"&gt;#  - /srv/pillar&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;and change it so it looks like:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;pillar_roots:
+  base:
+    - /srv/pillar
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Then we're done. Run the highstate again using salt-call --local state.highstate -l debug, and you should see everything get set up and configured. We create the virtual environment, and pull in out git repo. Now assuming we have our git repo hooked up properly you should be able to run a basic python server. I'm not going to get into the details here because we're mostly focusing on salt. The only thing we have left to do for this is to hook up nginx so that it's actually serving up content properly, so let's get to it!&lt;/p&gt;
+&lt;p&gt;We're going to start by modifying our app.sls, then we'll update nginx.&lt;/p&gt;
+&lt;p&gt;for the app.sls:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;{% set hungryadmin_venv = salt[&amp;#39;pillar.get&amp;#39;](&amp;#39;hungryadmin:venv&amp;#39;) %}
+{% set hungryadmin_proj = salt[&amp;#39;pillar.get&amp;#39;](&amp;#39;hungryadmin:proj&amp;#39;) %}
+{% set hungryadmin_user = salt[&amp;#39;pillar.get&amp;#39;](&amp;#39;hungryadmin:user&amp;#39;) %}
+
+include:
+  - git
+  - nginx
+  - python.pip
+  - python.virtualenv
+
+{{ hungryadmin_user }}:
+user:
+  - present
+  - shell: /bin/bash
+  - home: /home/{{ hungryadmin_user }}
+  - uid: 2150
+  - gid: 2150
+  - require:
+    - group: {{ hungryadmin_user }}
+group:
+  - present
+  - gid: 2150
+
+
+hungryadmin_venv:
+  virtualenv:
+    - managed
+    - name: {{ hungryadmin_venv }}
+    - runas: {{ hungryadmin_user }}
+    - require:
+      - pkg: python-virtualenv
+      - user: {{ hungryadmin_user }}
+
+hungryadmin:
+  git:
+    - latest
+    - name: https://github.com/gravyboat/hungryadmin.git
+    - target: {{ hungryadmin_proj }}
+    - runas: {{ hungryadmin_user }}
+    - force: True
+    - require:
+      - pkg: git
+      - virtualenv: hungryadmin_venv
+    - watch_in:
+      - service: nginx
+
+hungryadmin_pkgs:
+  pip:
+    - installed
+    - bin_env: {{ hungryadmin_venv }}
+    - requirements: {{ hungryadmin_proj }}/requirements.txt
+    - require:
+      - git: hungryadmin
+      - pkg: python-pip
+      - virtualenv: hungryadmin_venv
+
+/etc/nginx/conf.d/hungryadmin.conf:
+  file:
+    - managed
+    - source: salt://hungryadmin/files/hungryadmin.conf
+    - template: jinja
+    - user: root
+    - group: root
+    - mode: 644
+    - require:
+      - git: hungryadmin
+      - pkg: nginx
+    - watch_in:
+      - service: nginx
+
+/etc/nginx/sites-enabled/default:
+  file:
+    - absent
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;We've now added our conf file for this host, but we need to write that conf file now, so create /srv/salt/hungryadmin/files, and then hungryadmin.conf inside of that. It's content's look like this:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;server &lt;span class="o"&gt;{&lt;/span&gt;
+
+    listen &lt;span class="o"&gt;[&lt;/span&gt;::&lt;span class="o"&gt;]&lt;/span&gt;:80;
+
+    server_name &lt;span class="o"&gt;{{&lt;/span&gt; salt&lt;span class="o"&gt;[&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;pillar.get&amp;#39;&lt;/span&gt;&lt;span class="o"&gt;](&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;hungryadmin:url&amp;#39;&lt;/span&gt;&lt;span class="o"&gt;)&lt;/span&gt; &lt;span class="o"&gt;}}&lt;/span&gt;;
+    root &lt;span class="o"&gt;{{&lt;/span&gt; salt&lt;span class="o"&gt;[&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;pillar.get&amp;#39;&lt;/span&gt;&lt;span class="o"&gt;](&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;hungryadmin:root&amp;#39;&lt;/span&gt;&lt;span class="o"&gt;)&lt;/span&gt; &lt;span class="o"&gt;}}&lt;/span&gt;;
+
+    &lt;span class="nv"&gt;location&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; / &lt;span class="o"&gt;{&lt;/span&gt;
+        &lt;span class="c"&gt;# Instead of handling the index, just&lt;/span&gt;
+        &lt;span class="c"&gt;# rewrite / to /index.html&lt;/span&gt;
+        rewrite ^ /index.html;
+    &lt;span class="o"&gt;}&lt;/span&gt;
+
+    location / &lt;span class="o"&gt;{&lt;/span&gt;
+        &lt;span class="c"&gt;# Serve a .gz version if it exists&lt;/span&gt;
+        gzip_static on;
+        &lt;span class="c"&gt;# Try to serve the clean url version first&lt;/span&gt;
+        try_files &lt;span class="nv"&gt;$uri&lt;/span&gt;.htm &lt;span class="nv"&gt;$uri&lt;/span&gt;.html &lt;span class="nv"&gt;$uri&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt;404;
+    &lt;span class="o"&gt;}&lt;/span&gt;
+
+    &lt;span class="nv"&gt;location&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; /favicon.ico &lt;span class="o"&gt;{&lt;/span&gt;
+        &lt;span class="c"&gt;# This never changes, so don&amp;#39;t let it expire&lt;/span&gt;
+        expires max;
+    &lt;span class="o"&gt;}&lt;/span&gt;
+
+    location ^~ /theme &lt;span class="o"&gt;{&lt;/span&gt;
+        &lt;span class="c"&gt;# This content should very rarely, if ever, change&lt;/span&gt;
+        expires 1y;
+    &lt;span class="o"&gt;}&lt;/span&gt;
+&lt;span class="o"&gt;}&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Ok. So now you should be able to visit the site if you modify your host file to point towards the IP address, nice job!&lt;/p&gt;
+&lt;p&gt;At this point we have our server configured for SSH access, as well as fail2ban, we've got all the required python items installed for our static blog, we're pulling our content down from github, and we've got nginx configured to serve the content!&lt;/p&gt;
+&lt;p&gt;At this point we are pretty much done, depending on which blog tool you decide to use, it might be nice to extend how the virtualenv is run in the event it needs to be rebuilt, but I'm sure you're equiped to figure that out now! Lets look at how our directory structure turned out:&lt;/p&gt;
+&lt;p&gt;./pillar:
+hungryadmin.sls  top.sls&lt;/p&gt;
+&lt;p&gt;./salt:
+fail2ban  git  hungryadmin  nginx  python  ssh  top.sls&lt;/p&gt;
+&lt;p&gt;./salt/fail2ban:
+init.sls&lt;/p&gt;
+&lt;p&gt;./salt/git:
+init.sls&lt;/p&gt;
+&lt;p&gt;./salt/hungryadmin:
+app.sls  files&lt;/p&gt;
+&lt;p&gt;./salt/hungryadmin/files:
+hungryadmin.conf&lt;/p&gt;
+&lt;p&gt;./salt/nginx:
+init.sls&lt;/p&gt;
+&lt;p&gt;./salt/python:
+init.sls  pip.sls  requirements.txt  virtualenv.sls&lt;/p&gt;
+&lt;p&gt;./salt/ssh:
+init.sls  ssh_config&lt;/p&gt;
+</summary><category term="salt"></category><category term="saltstack"></category><category term="pelican"></category></entry></feed>
