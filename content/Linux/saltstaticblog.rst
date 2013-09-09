@@ -1,5 +1,5 @@
 Building a static blog and deploying it with SaltStack
-=========================
+======================================================
 :date: 2013-09-05
 :tags: salt, saltstack, pelican
 
