@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
         <meta charset="utf-8">
-        <title>Hungry Admin</title>
+        <title>Getting started with Salt</title>
         <link rel="stylesheet" href="/theme/css/main.css">
                 
         <!--[if IE]>
@@ -14,16 +14,19 @@
         <header id="banner" class="body">
                 <h1><a href="/">Hungry Admin </a></h1>
                 <nav><ul>
-                                                                                    <li ><a href="/category/linux.html">Linux</a></li>
+                                                                                    <li class="active"><a href="/category/linux.html">Linux</a></li>
                                                 </ul></nav>
         </header><!-- /#banner -->
-                
-            
+        <section id="content" class="body">
+  <article>
+    <header>
+      <h1 class="entry-title">
+        <a href="/getting-started-with-salt.html" rel="bookmark"
+           title="Permalink to Getting started with Salt">Getting started with Salt</a></h1>
+          </header>
 
-                            <aside id="featured" class="body">
-                <article>
-                    <h1 class="entry-title"><a href="/getting-started-with-salt.html">Getting started with Salt</a></h1> 
-                    <footer class="post-info">
+    <div class="entry-content">
+      <footer class="post-info">
         <abbr class="published" title="2013-09-05T00:00:00">
                 Thu 05 September 2013
         </abbr>
@@ -33,7 +36,7 @@
         </address>
         <p>In <a href="/category/linux.html">Linux</a>. </p>
 <p>tags: <a href="/tag/salt.html">salt</a><a href="/tag/saltstack.html">saltstack</a><a href="/tag/pelican.html">pelican</a></p>
-</footer><!-- /.post-info --><p>I'll be discussing the setup of the blog with this initial post, the main focus will be on the usage of SaltStack.</p>
+</footer><!-- /.post-info -->      <p>I'll be discussing the setup of the blog with this initial post, the main focus will be on the usage of SaltStack.</p>
 <p>Our setup is going to consist of the following:</p>
 <p>1 droplet from DigitalOcean (Ubuntu).</p>
 <p>Our static blog (Pelican) running through nginx and a virtualenv.</p>
@@ -665,14 +668,12 @@ init.sls</p>
 init.sls  pip.sls  requirements.txt  virtualenv.sls</p>
 <p>./salt/ssh:
 init.sls  ssh_config</p>
-                </article>
-                                    <p class="paginator">
-        Page 1 / 1
-    </p>
-                            </aside><!-- /#featured -->
-                                                </ol><!-- /#posts-list -->
-                        </section><!-- /#content -->
-                    <section id="extras" class="body">
+
+    </div><!-- /.entry-content -->
+    
+  </article>
+</section>
+        <section id="extras" class="body">
                         <div class="blogroll">
                         <h2>blogroll</h2>
                         <ul>
