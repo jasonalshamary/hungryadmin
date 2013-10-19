@@ -1,9 +1,7 @@
 Building a static blog and deploying it with SaltStack
 ======================================================
 :date: 2013-09-05
-:tags: salt, saltstack, pelican
-
-
+:tags: salt, saltstack, pelican, python, automation, git
 
 I'll be discussing the setup of the blog with this initial post, the main focus will be on the usage of SaltStack.
 
@@ -312,7 +310,7 @@ Awesome, now things are looking a lot better! Lets move on to managing our sshd_
       - require:
         - pkg: ssh
 
-Ok we've done quite a bit here, so we install the package. We ensure the service is running, that the requires are in place, and we're watching our ssh_config file. We also set up the ssh_config so that all our changes get applied properly. You'll notice that I've put single quotes around the mode, due to the way YAML is formatted, you can't have a leading 0 or it treats the value like a hexedecimal value, so just wrap it in single quotes. Let's see what our output looks like now:
+Ok we've done quite a bit here, so we install the package. We ensure the service is running, that the requires are in place, and we're watching our ssh_config file. We also set up the ssh_config so that all our changes get applied properly. You'll notice that I've put single quotes around the mode, due to the way YAML is formatted, you can't have a leading 0 or it treats the value like a hexadecimal value, so just wrap it in single quotes. Let's see what our output looks like now:
 
 .. code-block:: bash
 

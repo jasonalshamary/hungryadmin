@@ -1,9 +1,9 @@
 Downloading Java with Python
 ============================
 :date: 2013-09-16
-:tags: java, python
+:tags: java, python, automation
 
-A few weeks ago I wantedt to create a script that would automatically download the latest Java RPM from Oracle's site, and update a YUM repository so I wasn't constantly doing it manually.
+A few weeks ago I wanted to create a script that would automatically download the latest Java RPM from Oracle's site, and update a YUM repository so I wasn't constantly doing it manually.
 
 When I wrote the script there were a few key points it had to hit:
 
