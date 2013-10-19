@@ -23,8 +23,8 @@ LINKS =  (('Pelican', 'http://getpelican.com/'),
 
 # Social widget
 SOCIAL = (('github', 'http://github.com/gravyboat'),
-          ('stackoverflow', 'http://stackoverflow.com/users/1263015/forrest'),
           ('twitter', 'http://twitter.com/failvarez'),
+          ('stackoverflow', 'http://stackoverflow.com/users/1263015/forrest'),
           )
 
 DEFAULT_PAGINATION = 10
