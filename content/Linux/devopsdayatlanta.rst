@@ -1,4 +1,4 @@
-Attending conferences, the best way to go
+DevOpsDays Atlanta
 =========================================
 :date: 2013-10-18
 :tags: devopsdays, automation, devops, conferences
