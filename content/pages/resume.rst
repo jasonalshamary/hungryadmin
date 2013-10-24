@@ -48,6 +48,7 @@ Professional Experience
 =======================
 
 **Choice Hotels International, May 2013 - Present**
+
 LINUX SYSTEMS ADMINISTRATOR - Information Systems
 
 - Created a dashboard and backend to collect and visualize data providing
@@ -67,6 +68,7 @@ LINUX SYSTEMS ADMINISTRATOR - Information Systems
 .. class:: center
 
 **GoDaddy.com LLC, March 2011 - May 2013**
+
 LINUX SYSTEMS ENGINEER - Information Systems
 
 - Provided 4th tier support to LAMP stack shared hosting platform
@@ -103,6 +105,7 @@ LINUX SYSTEMS ENGINEER - Information Systems
 .. class:: center
 
 **GoDaddy.com LLC, October 2010 - March 2011**
+
 SHARED HOSTING SUPPORT - Advanced Hosting Support
 
 - Assisted customers by phone, email and trouble ticket within specified
