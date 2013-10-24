@@ -5,9 +5,9 @@ About Me
 
 .. class:: center
 
-** Forrest Alvarez**
+**Forrest Alvarez**
 
-** Linux Systems Engineer**
+**Linux Systems Engineer**
 
 Talented and motivated IT professional with several years of experience in
 system design and troubleshooting. Possesses a full range of IT experience,
