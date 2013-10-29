@@ -3,7 +3,7 @@ DevOpsDays Atlanta
 :date: 2013-10-18
 :tags: devopsdays, automation, devops, conferences
 
-A few weeks ago I took some vacation time and went to http://devopsdays.org/events/2013-atlanta/ , and it was a great experience. The conference itself was very laid back, with breakfast, a few sessions, lunch, and then open spaces. I had never attended an event that had open spaces before, but they have quickly become one of my favorite forums for discussion.
+Earlier this month I took some vacation time and went to http://devopsdays.org/events/2013-atlanta/ , and it was a great experience. The conference itself was very laid back, with breakfast, a few sessions, lunch, and then open spaces. I had never attended an event that had open spaces before, but they have quickly become one of my favorite forums for discussion.
 
 The general idea of an open space is you propose an idea (from the podium after the final talk of the day) that you want to discuss, then everyone votes. Once voting is complete, the open spaces are given time/areas, and from there you do whatever you want. You can leave an open space and join others, and no one gives you grief about it. 
 
