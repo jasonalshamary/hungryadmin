@@ -40,6 +40,7 @@ Certifications
 
 - Red Hat Certified Engineer - 111-081-113 (April 20, 2012)
 - Red Hat Certified System Administrator - 111-081-113 (April 29, 2011)
+- SaltStack Certified Engineer - 0x71EDAE6D (January 29, 2014)
 
 
 .. class:: center
