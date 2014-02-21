@@ -30,7 +30,7 @@ Proficiences
 - Troubleshooting / Root cause analysis
 - Critical production service environments
 - 24x7 support
-- Configuration management
+- Configuration management (Puppet, Salt)
 
 
 .. class:: center
