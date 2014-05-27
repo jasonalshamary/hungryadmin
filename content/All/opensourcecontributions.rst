@@ -41,7 +41,7 @@ or that others encountered in the IRC. I'd also email myself with tasks to
 accomplish at night that people were encountering with the documentation.
 Minor code fixes were also part of my off hours work, but the biggest thing
 was the documentation. As a Puppet user who had struggled to learn through
-their docs, I felt as though the Salt docs should have the best documentation
+their docs, I felt as though Salt should have the best documentation
 available, so that anyone could quickly pick things up.
 
 My lack of familiarity with Salt also helped greatly here, as I was able to
@@ -70,7 +70,7 @@ interest in, there's a good chance you're just going to stop. Having a vested
 interested in the project makes it a lot easier to work on.
 
 You also want to make sure you like the community that works on the project.
-Obviously you can't like everyone in life, but being party of a community that
+Obviously you can't like everyone in life, but being part of a community that
 fosters new contributors is key. As I said above, I hung out in the Salt IRC
 for a while before I started answering questions. For me this didn't take too
 long as I was reading the docs and implementing the technology. Go at your own
