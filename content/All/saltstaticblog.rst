@@ -29,13 +29,13 @@ We'll be going through the steps here: http://docs.saltstack.com/topics/installa
 
 For Ubuntu you may or may not need to install the following package, check if you have the 'add-apt-repository' command, I did not:
 
-apt-get install python-software-properties
+``apt-get install python-software-properties``
 
 For me this still didn't provide it, so I had to run
 
-apt-get install add-software-properties-common and I was all set to go.
+``apt-get install add-software-properties-common`` and I was all set to go.
 
-Ok now I had the add-apt-repository command available I added the saltstack repo: add-apt-repository ppa:saltstack/salt
+Ok now I had the add-apt-repository command available I added the saltstack repo: ``add-apt-repository ppa:saltstack/salt``
 
 Since we're just going to have one server here, we're going to configure it as a masterless minion:
 
@@ -43,7 +43,7 @@ http://docs.saltstack.com/topics/tutorials/quickstart.html
 
 So we'll start by installing just the salt-minion with:
 
-apt-get install salt-minion.
+``apt-get install salt-minion``
 
 Now I like to run a quick test here to make sure things are working properly, so lets install nginx real quick.
 
@@ -91,7 +91,7 @@ Awesome, so now nginx is installed by salt.
 
 Now there are a few things we're going to want to configure here, and a few items we'll have to modify later as we go through setting up the blog itself.
 
-The first thing I want to do is install fail2ban. So lets create that sls
+The first thing I want to do is install fail2ban. So lets create that sls:
 
 /srv/salt/fail2ban.sls
 
@@ -112,7 +112,7 @@ and lets update our top.sls again so this gets included:
       - webserver
       - fail2ban
 
-Ok lets run our highstate again: salt-call --local state.highstate -l debug
+Ok lets run our highstate again: ``salt-call --local state.highstate -l debug``
 
 And you should see output like this:
 
@@ -165,7 +165,7 @@ So we'll get details back on our other items, but what we're focusing on is this
           Changes:
 
 
-Now you can see the result here is 'false', does that mean things failed? Let's modify the fail2ban.conf and see. Odd, after adding a line to the fail2ban.conf file I still get the following:
+Now you can see the result here is 'False', does that mean things failed? Let's modify the fail2ban.conf and see. Odd, after adding a line to the fail2ban.conf file I still get the following:
 
 .. code-block:: bash
 
@@ -206,23 +206,23 @@ Now things are looking better:
           Comment:   The service fail2ban is already running
           Changes:
 
-So why did this fail before? The reason it fails is because salt doesn't understand that we want to modify the fail2ban.conf, because we didn't declare it inside of the fail2ban.sls. Imagine it like someone has handed you a stack of papers, each with a number on them. They then ask you to find a numbered paper to read them the details on, well they call out 7, and you sort through the stack of papers, but you don't have that paper! How can you provide details about something you don't possess or have in your hand? It's exactly the same with Salt, if you don't say 'hey this is the file, this is the content', and then tell it to watch that file for changes, it doesn't know what to do because it doesn't think the file exists! Since we don't have anything specific going on inside the fail2ban.conf, we aren't going to modify it.
+So why did this fail before? The reason it fails is because Salt doesn't understand that we want to modify the fail2ban.conf, because we didn't declare it inside of the fail2ban.sls. Imagine it like someone has handed you a stack of papers, each with a number on them. They then ask you to find a numbered paper to read them the details on, well they call out 7, and you sort through the stack of papers, but you don't have that paper! How can you provide details about something you don't possess or have in your hand? It's exactly the same with Salt, if you don't say 'hey this is the file, this is the content', and then tell it to watch that file for changes, it doesn't know what to do because it doesn't think the file exists! Since we don't have anything specific going on inside the fail2ban.conf, we aren't going to modify it.
 
-What we DO need to modify however is the ssh_config file, so we can change the port, and disable root login for security purposes. So lets start by creating an ssh directory for salt, we don't want to clog up our main directory, we'll move the other content as well, and change the naming scheme to better represent both the files, and to meet the requirements salt has set.
+What we DO need to modify however is the sshd_config file, so we can change the port, and disable root login for security purposes. So lets start by creating an ssh directory for Salt, we don't want to clog up our main directory, we'll move the other content as well, and change the naming scheme to better represent both the files, and to meet the requirements Salt has set.
 
 First lets make some directories for our existing content, create the following:
 
-mkdir /srv/salt/fail2ban
-mkdir /srv/salt/nginx
-mkdir /srv/salt/ssh
+``mkdir /srv/salt/fail2ban``
+``mkdir /srv/salt/nginx``
+``mkdir /srv/salt/ssh``
 
 Now move the files:
 
-mv /srv/salt/fail2ban.sls /srv/salt/fail2ban/init.sls
+``mv /srv/salt/fail2ban.sls /srv/salt/fail2ban/init.sls``
 
-mv /srv/salt/webserver.sls /srv/salt/nginx/init.sls
+``mv /srv/salt/webserver.sls /srv/salt/nginx/init.sls``
 
-cp /etc/ssh/ssh_config /srv/salt/ssh/ssh_config
+``cp /etc/ssh/sshd_config /srv/salt/ssh/sshd_config``
 
 Now you're thinking to yourself 'woah woah woah, why did this guy change the file names to inits??'. The reasoning behind this is now that they're no longer in top level directories, we still want them to get applied, and the init just inherits the name of the directory, which is great for having a base file that would get configured everywhere.
 
@@ -297,7 +297,7 @@ Awesome, now things are looking a lot better! Lets move on to managing our sshd_
       - require:
         - pkg: ssh
       - watch:
-        - file: /etc/ssh/ssd_config
+        - file: /etc/ssh/sshd_config
 
 
   /etc/ssh/sshd_config:
@@ -310,7 +310,7 @@ Awesome, now things are looking a lot better! Lets move on to managing our sshd_
       - require:
         - pkg: ssh
 
-Ok we've done quite a bit here, so we install the package. We ensure the service is running, that the requires are in place, and we're watching our ssh_config file. We also set up the ssh_config so that all our changes get applied properly. You'll notice that I've put single quotes around the mode, due to the way YAML is formatted, you can't have a leading 0 or it treats the value like a hexadecimal value, so just wrap it in single quotes. Let's see what our output looks like now:
+Ok we've done quite a bit here. So we install the package, and ensure the service is running, and the requires are in place, and we're watching our sshd_config file. We also set up the sshd_config so that all our changes get applied properly. You'll notice that I've put single quotes around the mode, due to the way YAML is formatted, you can't have a leading 0 or it treats the value like a hexadecimal value, so just wrap it in single quotes. Let's see what our output looks like now:
 
 .. code-block:: bash
 
@@ -358,7 +358,7 @@ Ok we've done quite a bit here, so we install the package. We ensure the service
           Comment:   The service ssh is already running
           Changes:
 
-Awesome, so everything seems to be going well, lets modify our /srv/salt/ssh/sshd_config for fun (I'm just going to add a comment), and re-run the highstate with salt-call --local state.highstate -l debug:
+Awesome, so everything seems to be going well, lets modify our /srv/salt/ssh/sshd_config for fun (I'm just going to add a comment), and re-run the highstate with ``salt-call --local state.highstate -l debug``:
 
 .. code-block:: bash
 
@@ -417,9 +417,9 @@ Awesome, so everything seems to be going well, lets modify our /srv/salt/ssh/ssh
           Comment:   Service restarted
           Changes:   ssh: True
 
-You can see that we've added that comment line, and then the service was restarted because it's watching the ssh_config file, just like we wanted! Now modify that back, no reason to waste a comment line. Ok, so we've got ssh locked down in some fashion, nginx is installed, and we've fail2ban installed as well. We've already got python installed, but we're missing things like virtualenv which are key.
+You can see that we've added that comment line, and then the service was restarted because it's watching the sshd_config file, just like we wanted! Now modify that back, no reason to waste a comment line. Ok, so we've got ssh locked down in some fashion, nginx is installed, and we've installed fail2ban as well. We've already got Python installed, but we're missing things like virtualenv which are key.
 
-Let's create /srv/salt/python/ so we can get Python and the other associated items configured (and we can show more cool salt stuff). So we're going to start breaking things out here. Let's pretend for a second this isn't a single machine, but an environment. You wouldn't want to install setuptools on a machine that only needs python would you? No of course not, so we break out our /srv/salt/python/ directory into two files for right now, the first is /srv/salt/python/init.sls, it looks like this:
+Let's create /srv/salt/python/ so we can get Python and the other associated items configured (and we can show more cool Salt stuff). So we're going to start breaking things out here. Let's pretend for a second this isn't a single machine, but an environment. You wouldn't want to install setuptools on a machine that only needs python would you? No of course not, so we break out our /srv/salt/python/ directory into two files for right now, the first is /srv/salt/python/init.sls, it looks like this:
 
 .. code-block:: yaml
 
@@ -429,7 +429,7 @@ Let's create /srv/salt/python/ so we can get Python and the other associated ite
 
 Super easy right? Just make sure python is installed. 
 
-Let's get pip installed as well, let's make another sls. This may seem verbose, but for the time being it isn't a lot of work and we want to keep each item seperate. So create a pip.sls
+Let's get pip installed as well, let's make another sls, /srv/salt/python/pip.sls. This may seem verbose, but for the time being it isn't a lot of work and we want to keep each item seperate. So create a pip.sls:
 
 .. code-block:: yaml
 
@@ -449,7 +449,7 @@ And modify the top.sls again:
     - python.pip
 
 
-Run our salt-call --local state.highstate -l debug again and we get this nice big wall of spam:
+Run our ``salt-call --local state.highstate -l debug`` again and we get this nice big wall of spam:
 
 .. code-block:: bash
 
@@ -498,7 +498,7 @@ Run our salt-call --local state.highstate -l debug again and we get this nice bi
 
 Great so pip is now installed on our server.
 
-Ok so we've got pip installed, lets get virtualenv taken care of. This is just a copy of our pip.sls, so copy it over: cp /srv/salt/python/pip.sls /srv/salt/python/virtualenv.sls, it should look like this:
+Ok so we've got pip installed, lets get virtualenv taken care of. This is just a copy of our pip.sls, so copy it over: ``cp /srv/salt/python/pip.sls /srv/salt/python/virtualenv.sls``, it should look like this:
 
 .. code-block:: yaml
 
@@ -517,7 +517,7 @@ Let's modify our top.sls to look like this (add virtualenv, and get rid of pip f
       - ssh
       - python.virtualenv
 
-Let's run it with salt-call --local state.highstate -l debug again:
+Let's run it with ``salt-call --local state.highstate -l debug`` again:
 
 .. code-block:: bash
 
@@ -584,7 +584,7 @@ Ok we have virtualenv installed, and git to pull down our content. So the next s
         - pkg: python-pip
         - virtualenv: hugryadmin_venv
 
-Ok, so we've now got an app.sls that's going to take care of a lot of things. Now I know you're thinking "what is all this pillar crap that he's using?", well we are going to get to that in a minute, the key thing here is that you understand what each of these items do, it's pretty easy to tell right? for the hungryadmin_venv variable, it's clearly the location of our virtual environment, and our hungryadmin_user, is simply our user for the virtual environment. The only slightly confusing one here is hungryadmin_proj, but even that we figure it out. We know we're going to pull our git content into the virtual environment right? So we know it has something to do with that.
+Ok, so we've now got an app.sls that's going to take care of a lot of things. Now I know you're thinking "what is all this pillar crap that he's using?", well we are going to get to that in a minute, the key thing here is that you understand what each of these items do, it's pretty easy to tell right? for the hungryadmin_venv variable, it's clearly the location of our virtual environment, and our hungryadmin_user, is simply our user for the virtual environment. The only slightly confusing one here is hungryadmin_proj, but even that we can figure out. We know we're going to pull our git content into the virtual environment right? So we know it has something to do with that.
 
 Next let's modify our top.sls so it looks like this:
 
@@ -597,7 +597,7 @@ Next let's modify our top.sls so it looks like this:
       - ssh
       - hungryadmin.app
 
-So why aren't we including git, or any of the python content any longer? Because we don't need to! We've already included them in the app.sls for hungryadmin, so there's no need to include them again. Now that we've modified the top.sls lets take care of those variables I had earlier. So those values (as you can see when I defined them) are pillar values. Now the best way to think of pillar data is really just global variables, it's the first thing that the salt team state in the pillar docs, and it makes the most sense. So let's get the pillar data going. Create the following files:
+So why aren't we including git, or any of the python content any longer? Because we don't need to! We've already included them in the app.sls for hungryadmin, so there's no need to include them again. Now that we've modified the top.sls lets take care of those variables I had earlier. So those values (as you can see when I defined them) are pillar values. Now the best way to think of pillar data is really just global variables, it's the first thing that the Salt team state in the pillar docs, and it makes the most sense. So let's get the pillar data going. Create the following files:
 
 /srv/pillar/top.sls
 /srv/pillar/hungryadmin.sls
@@ -633,7 +633,7 @@ and populate them with this data:
 
 OK so basically what we've just done is say 'hey for all servers, load in these pillar files', that happens in the top.sls. Then in the hungryadmin.sls, we set our variables, so we can reference them like hungryadmin_user which will return 'woody' and so on. If we wanted we could add another section for other items.
 
-Now that we have this done, we need to tell salt where to look for our pillar data. To do this edit the /etc/salt/minion (since we aren't using a master in this configuration), find the line that mentions pillar root:
+Now that we have this done, we need to tell Salt where to look for our pillar data. To do this edit the /etc/salt/minion (since we aren't using a master in this configuration), find the line that mentions pillar root:
 
 .. code-block:: bash
 
@@ -649,7 +649,7 @@ and change it so it looks like:
     base:
       - /srv/pillar
 
-Then we're done. Run the highstate again using salt-call --local state.highstate -l debug, and you should see everything get set up and configured. We create the virtual environment, and pull in out git repo. Now assuming we have our git repo hooked up properly you should be able to run a basic python server. I'm not going to get into the details here because we're mostly focusing on salt. The only thing we have left to do for this is to hook up nginx so that it's actually serving up content properly, so let's get to it!
+Note that this is the default setting, I'm mentioning it here so you can take a look at the configuration file. Run the highstate again using ``salt-call --local state.highstate -l debug``, and you should see everything get set up and configured. We create the virtual environment, and pull in out git repo. Now assuming we have our git repo hooked up properly you should be able to run a basic python server. I'm not going to get into the details here because we're mostly focusing on Salt. The only thing we have left to do for this is to hook up nginx so that it's actually serving up content properly, so let's get to it!
 
 We're going to start by modifying our app.sls, then we'll update nginx.
 
@@ -768,9 +768,9 @@ We've now added our conf file for this host, but we need to write that conf file
 
 Ok. So now you should be able to visit the site if you modify your host file to point towards the IP address, nice job!
 
-At this point we have our server configured for SSH access, as well as fail2ban, we've got all the required python items installed for our static blog, we're pulling our content down from github, and we've got nginx configured to serve the content! 
+At this point we have our server configured for SSH access, as well as fail2ban, we've got all the required Python items installed for our static blog, we're pulling our content down from GitHub, and we've got nginx configured to serve the content! 
 
-At this point we are pretty much done, depending on which blog tool you decide to use, it might be nice to extend how the virtualenv is run in the event it needs to be rebuilt, but I'm sure you're equiped to figure that out now! Lets look at how our directory structure turned out:
+Now we're pretty much done, depending on which blog tool you decide to use, it might be nice to extend how the virtualenv is run in the event it needs to be rebuilt, but I'm sure you're equipped to figure that out now! Lets look at how our directory structure turned out:
 
 ./pillar:
 hungryadmin.sls  top.sls
@@ -797,6 +797,6 @@ init.sls
 init.sls  pip.sls  requirements.txt  virtualenv.sls
 
 ./salt/ssh:
-init.sls  ssh_config
+init.sls  sshd_config
 
 Ok great, so we've not got the basics of a blog ready to go. All I have to do for my Pelican blog is create my posts, build it, and then push it to github. Then run Salt and my server is ready to go! I hope this helped you out!
