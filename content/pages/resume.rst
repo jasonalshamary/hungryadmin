@@ -58,7 +58,7 @@ DevOps Engineer
 
 **Choice Hotels International, May 2013 - March 2014**
 
-LINUX SYSTEMS ADMINISTRATOR - Information Systems
+Linux Systems Administrator - Information Systems
 
 - Created a dashboard and backend to collect and visualize data providing
   at a glance reporting. Reports included kernel version for security
@@ -78,7 +78,7 @@ LINUX SYSTEMS ADMINISTRATOR - Information Systems
 
 **GoDaddy.com LLC, March 2011 - May 2013**
 
-LINUX SYSTEMS ENGINEER - Information Systems
+Linux Systems Engineer - Information Systems
 
 - Provided 4th tier support to LAMP stack shared hosting platform
 
@@ -115,7 +115,7 @@ LINUX SYSTEMS ENGINEER - Information Systems
 
 **GoDaddy.com LLC, October 2010 - March 2011**
 
-SHARED HOSTING SUPPORT - Advanced Hosting Support
+Shared Hosting Support - Advanced Hosting Support
 
 - Assisted customers by phone, email and trouble ticket within specified
   SLAs with a strong focus on customer service
