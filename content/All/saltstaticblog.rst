@@ -574,6 +574,16 @@ Ok we have virtualenv installed, and git to pull down our content. So the next s
         - pkg: git
         - virtualenv: hungryadmin_venv
 
+  refresh_pelican:
+    cmd:
+      - run
+      - user: {{ hungryadmin_user }}
+      - name: {{ hungryadmin_venv }}/bin/pelican -s {{hungryadmin_proj}}/pelicanconf.py
+      - require:
+        - virtualenv: hungryadmin_venv
+      - watch:
+        - git: hungryadmin
+
   hungryadmin_pkgs:
     pip:
       - installed
