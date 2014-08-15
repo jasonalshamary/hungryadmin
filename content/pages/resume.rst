@@ -26,7 +26,7 @@ Proficiences
 
 - Linux
 - Scripting skills (Python and Bash)
-- RPM creation
+- RPM/deb creation
 - Troubleshooting / Root cause analysis
 - Critical production service environments
 - 24x7 support
@@ -50,7 +50,7 @@ Professional Experience
 
 .. class:: center
 
-**Flowroute LLC, April 2014 - Present**
+**Flowroute Inc, April 2014 - Present**
 
 DevOps Engineer
 
