@@ -39,7 +39,7 @@ probably be on the shorter side (100 pages MAX), since I don't like
 lengthy books that drone on and on about every little detail, that's what the
 documentation is for!
 
-So the biggest question, what is the time line for the book? When will the
+So the biggest questions, what is the time line for the book? When will the
 book be done? The honest answer is I don't know. I enjoy working on it, but
 have a particular writing style which takes some time on my part to properly
 write, and I enjoy writing where there is a sense of purpose and a goal to
