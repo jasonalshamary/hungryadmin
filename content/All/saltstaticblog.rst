@@ -7,7 +7,7 @@ I'll be discussing the setup of the blog with this initial post, the main focus 
 
 Our setup is going to consist of the following:
 
-1 droplet from DigitalOcean (Ubuntu).
+1 Ubuntu droplet from DigitalOcean, or your favorite VPS provider.
 
 Our static blog (Pelican) running through nginx and a virtualenv.
 
