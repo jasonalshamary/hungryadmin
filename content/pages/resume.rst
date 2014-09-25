@@ -50,9 +50,20 @@ Professional Experience
 
 .. class:: center
 
-**Flowroute Inc, April 2014 - Present**
+**Flowroute Inc, April 2014 - September 2014**
 
 DevOps Engineer
+
+- Set up and configure a continuous integration system which allows for
+  automated testing on every push.
+
+- Create a set of Salt states to automate the setup process for new developers,
+  turning a multi-day setup into a 30 minute process that is repeatable.
+
+- Configure Aptly to allow updates and releases for multiple distributions.
+
+- Improve the process by which web deployments are accomplished, reducing
+  deployment time, and increasing the number of deployments.
 
 .. class:: center
 
