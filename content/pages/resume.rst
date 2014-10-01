@@ -50,6 +50,10 @@ Professional Experience
 
 .. class:: center
 
+**KISSmetrics October 2014 - Present**
+
+Operations Engineer
+
 **Flowroute Inc, April 2014 - September 2014**
 
 DevOps Engineer
