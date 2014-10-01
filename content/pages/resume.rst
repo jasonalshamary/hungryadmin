@@ -50,7 +50,7 @@ Professional Experience
 
 .. class:: center
 
-**KISSmetrics October 2014 - Present**
+**KISSmetrics, October 2014 - Present**
 
 Operations Engineer
 
