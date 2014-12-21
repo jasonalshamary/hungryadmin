@@ -1,5 +1,5 @@
 Chrome OS, a Quick Review
-========================
+==========================
 :date: 2013-12-20
 :tags: Chrome OS, review, git
 
