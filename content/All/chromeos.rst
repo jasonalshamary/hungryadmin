@@ -1,6 +1,6 @@
 Chrome OS, a Quick Review
 ==========================
-:date: 2013-12-20
+:date: 2014-12-20
 :tags: Chrome OS, review, git
 
 It’s the holidays, and that means you might be considering a new laptop.
