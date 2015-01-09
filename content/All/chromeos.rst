@@ -1,6 +1,6 @@
 Chrome OS, a Quick Review
-========================
-:date: 2013-12-20
+==========================
+:date: 2014-12-20
 :tags: Chrome OS, review, git
 
 It’s the holidays, and that means you might be considering a new laptop.
@@ -19,10 +19,10 @@ a lot of people will consider this as a major selling point, and say that for
 only someone using the machine for a while would notice, and what the major
 drawbacks are.
 
-Let’s start with the CPU, it’s okay, but it’s not great, this means sometimes 
-things are a bit slower to happen when they aren’t spinning off the disk, and 
+Let’s start with the CPU, it’s okay, but it’s not great so sometimes
+things are a bit slow. Having a small hard drive is also tough, 
 16 gigs of space basically means I don’t use the Chromebook for anything 
-serious, and even if I wanted to I couldn’t because support is pretty bad for
+serious and even if I wanted to I couldn’t because support is pretty bad for
 the device. It’s made to browse the internet and use internet apps, and that’s
 basically it. Usually this is okay, but sometimes you’re out of luck. A great
 example of this was in early 2014. I had to spend the night in an airport, and
