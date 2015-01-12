@@ -21,7 +21,7 @@ made from extremely cheap shirts, or have embarrassing phrases on them that
 scream 'I am a nerd and better than you'.
 
 None of these things make me want to wear a t-shirt, so when I went to
-DevOpsDay Atlanta and saw these(http://instagram.com/p/QYld7mMzGJ/) t-shirts. I
+DevOpsDay Atlanta and saw these (http://instagram.com/p/QYld7mMzGJ/) t-shirts. I
 was pretty impressed. Let's start with the most important thing, the shirt cost
 more than 20 cents, and wasn't made by some Honduran child in a sweatshop. In
 fact they sprung for American Apparel, which is a win in my book as a tall
