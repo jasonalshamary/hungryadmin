@@ -1,4 +1,4 @@
-The Important of High Quality Conference Goods
+The Importance of High Quality Conference Goods
 ================================================
 :date: 2015-01-07
 :tags: conferences, merchandise
