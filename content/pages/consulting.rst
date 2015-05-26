@@ -7,3 +7,4 @@ Consulting
 
 If you need remote consulting (primarily focusing on SaltStack) I'm available
 to work with your team. Feel free to email me: forrest.alvarez@gmail.com
+Please do not contact me if you are a recruiter.

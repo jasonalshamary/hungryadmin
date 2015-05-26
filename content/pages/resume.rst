@@ -54,20 +54,27 @@ Professional Experience
 
 Operations Engineer
 
+- Implement a fully virtualized (Vagrant) development environment allowing for
+  collaboration and repeatable process between developers with shorter
+  onboarding times
+
+- Update and modularize Salt states to allow for ease of use between multiple
+  projects
+
 **Flowroute Inc, April 2014 - September 2014**
 
 DevOps Engineer
 
 - Set up and configure a continuous integration system which allows for
-  automated testing on every push.
+  automated testing on every push
 
 - Create a set of Salt states to automate the setup process for new developers,
-  turning a multi-day setup into a 30 minute process that is repeatable.
+  turning a multi-day setup into a 30 minute process that is repeatable
 
-- Configure Aptly to allow updates and releases for multiple distributions.
+- Configure Aptly to allow updates and releases for multiple distributions
 
 - Improve the process by which web deployments are accomplished, reducing
-  deployment time, and increasing the number of deployments.
+  deployment time, and increasing the number of deployments
 
 .. class:: center
 
