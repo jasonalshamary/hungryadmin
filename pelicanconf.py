@@ -6,7 +6,7 @@ AUTHOR = u'Forrest Alvarez'
 SITENAME = u'Hungry Admin'
 SITEURL = 'http://hungryadmin.com'
 
-TIMEZONE = 'Europe/Paris'
+TIMEZONE = 'GMT'
 
 DEFAULT_LANG = u'en'
 
@@ -16,11 +16,11 @@ CATEGORY_FEED_ATOM = None
 TRANSLATION_FEED_ATOM = None
 
 # Blogroll
-LINKS =  (('Talks', 'https://speakerdeck.com/gravyboat'),
-          ('Pelican', 'http://getpelican.com/'),
-          ('Python.org', 'http://python.org/'),
-          ('Jinja2', 'http://jinja.pocoo.org/'),
-          ('SaltStack', 'http://saltstack.org'),)
+LINKS = (('Talks', 'https://speakerdeck.com/gravyboat'),
+         ('Pelican', 'http://getpelican.com/'),
+         ('Python.org', 'http://python.org/'),
+         ('Jinja2', 'http://jinja.pocoo.org/'),
+         ('SaltStack', 'http://saltstack.org'),)
 
 # Social widget
 SOCIAL = (('github', 'http://github.com/gravyboat'),
@@ -31,9 +31,11 @@ SOCIAL = (('github', 'http://github.com/gravyboat'),
 DEFAULT_PAGINATION = 10
 
 # Uncomment following line if you want document-relative URLs when developing
-#RELATIVE_URLS = True
+# RELATIVE_URLS = True
 
 PAGE_DIR = ('content/pages')
 
 # Theme
 THEME = "themes/pelican-bootstrap3"
+
+PLUGINS = ['minification', ]
