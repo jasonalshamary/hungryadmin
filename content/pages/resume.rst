@@ -30,7 +30,7 @@ Proficiences
 - Troubleshooting / Root cause analysis
 - Critical production service environments
 - 24x7 support
-- Configuration management (Puppet, Salt)
+- Configuration management (Salt)
 
 
 .. class:: center
@@ -50,7 +50,7 @@ Professional Experience
 
 .. class:: center
 
-**KISSmetrics, October 2014 - Present**
+**Kissmetrics, October 2014 - Present**
 
 Operations Engineer
 
