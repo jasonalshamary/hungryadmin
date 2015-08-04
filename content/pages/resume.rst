@@ -9,15 +9,9 @@ Resume
 
 **Linux Systems Engineer**
 
-Talented and motivated IT professional with several years of experience in
-system design and troubleshooting. Possesses a full range of IT experience,
-with a career that started as advanced technical support, to joining a 
-Linux Systems Engineering team globally recognized for its use and 
-implementation of technology and services which host over 50 million domains.
-Adept at communicating with management, colleagues, and customers to develop
-working relationships with a focus on providing excellent customer service. 
-Open source contributor and documentation fanatic. Willing to relocate.
-
+Open source advocate, SaltStack contributor, and documentation fanatic.
+Dedicated to improving development pipelines and processes to help both
+developers and community members attain their goals.
 
 .. class:: center
 
