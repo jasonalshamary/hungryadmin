@@ -15,7 +15,7 @@ developers and community members attain their goals.
 
 .. class:: center
 
-Proficiences
+Proficiencies
 ============
 
 - Linux
