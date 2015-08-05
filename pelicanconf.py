@@ -39,3 +39,5 @@ PAGE_DIR = ('content/pages')
 THEME = "themes/pelican-bootstrap3"
 
 PLUGINS = ['minification', ]
+GITHUB_URL = 'https://github.com/gravyboat'
+MENUITEMS = (('Talks', 'https://speakerdeck.com/gravyboat'),)
