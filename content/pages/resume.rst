@@ -16,7 +16,7 @@ developers and community members attain their goals.
 .. class:: center
 
 Proficiencies
-============
+=============
 
 - Linux
 - Scripting skills (Python and Bash)
