@@ -23,6 +23,13 @@ So basically the configuration is going to go like this:
 
 4. From there it's all blog content related.
 
+For the completedproject head over to:
+https://github.com/gravyboat/hungryadmin-sls
+
+.. note::
+    This tutorial is now enhanced by the masterless reactore post here:
+    `here <http://hungryadmin.com/BLOG_POST_PATH>`.
+
 Our first step is to get salt installed: 
 
 We'll be going through the steps here: http://docs.saltstack.com/topics/installation/ubuntu.html
@@ -61,9 +68,9 @@ If you're following along in the quickstart for the masterless minion, scroll do
 
 .. code-block:: yaml
 
-  nginx:
-    pkg:
-      - installed
+  install_nginx:
+    pkg.installed:
+      - name: nginx
 
 Ok now that those are saved, just run salt-call --local state.highstate -l debug, it should look like the following:
 
@@ -72,7 +79,7 @@ Ok now that those are saved, just run salt-call --local state.highstate -l debug
   local:
   ----------
       State: - pkg
-      Name:      nginx
+      Name:      install_nginx
       Function:  installed
           Result:    True
           Comment:   Package nginx installed
@@ -97,9 +104,9 @@ The first thing I want to do is install fail2ban. So lets create that sls:
 
 .. code-block:: yaml
 
-  fail2ban:
-    pkg:
-      - installed
+  install_fail2ban:
+    pkg.installed:
+      - name: fail2ban
 
 and lets update our top.sls again so this gets included:
 
@@ -121,7 +128,7 @@ And you should see output like this:
   local:
   ----------
       State: - pkg
-      Name:      fail2ban
+      Name:      install_fail2ban
       Function:  installed
           Result:    True
           Comment:   Package fail2ban installed
@@ -131,7 +138,7 @@ And you should see output like this:
 
   ----------
       State: - pkg
-      Name:      nginx
+      Name:      install_nginx
       Function:  installed
           Result:    True
           Comment:   Package nginx is already installed
@@ -142,13 +149,18 @@ great, now fail2ban will be installed, by default the service starts but let's m
 
 .. code-block:: yaml
 
-  fail2ban:
-    pkg:
-      - installed
-    service:
-      - running
+  install_fail2ban:
+    pkg.installed:
+      - name: fail2ban
+
+  fail2ban_service:
+    service.running:
+      - name: fail2ban
       - watch:
+        - pkg: install_fail2ban
         - file: /etc/fail2ban/fail2ban.conf
+      - require:
+        - pkg: install_fail2ban
 
 So we'll get details back on our other items, but what we're focusing on is this:
 
@@ -156,7 +168,7 @@ So we'll get details back on our other items, but what we're focusing on is this
 
   ----------
       State: - service
-      Name:      fail2ban
+      Name:      fail2ban_service
       Function:  running
           Result:    False
           Comment:   The following requisites were not found:
@@ -171,7 +183,7 @@ Now you can see the result here is 'False', does that mean things failed? Let's 
 
   ----------
       State: - service
-      Name:      fail2ban
+      Name:      fail2ban_service
       Function:  running
           Result:    False
           Comment:   The following requisites were not found:
@@ -184,23 +196,25 @@ Ok lets modify our fail2ban.sls to just require the package, let's also add a re
 
 .. code-block:: yaml
 
-  fail2ban:
-    pkg:
-      - installed
-    service:
-      - running
-      - watch:
-        - pkg: fail2ban
-      - require:
-        - pkg: fail2ban
+  install_fail2ban:
+    pkg.installed:
+      - name: fail2ban
 
+  fail2ban_service:
+    service.running:
+      - name: fail2ban
+      - watch:
+        - pkg: install_fail2ban
+      - require:
+        - pkg: install_fail2ban
+ 
 Now things are looking better:
 
 .. code-block:: bash
 
   ----------
       State: - service
-      Name:      fail2ban
+      Name:      fail2ban_service
       Function:  running
           Result:    True
           Comment:   The service fail2ban is already running
@@ -235,14 +249,14 @@ So just to make sure we didn't break anything, let's run our highstate again:
   local:
   ----------
       State: - pkg
-      Name:      fail2ban
+      Name:      install_fail2ban
       Function:  installed
           Result:    True
           Comment:   Package fail2ban is already installed
           Changes:
   ----------
       State: - service
-      Name:      fail2ban
+      Name:      fail2ban_service
       Function:  running
           Result:    True
           Comment:   The service fail2ban is already running
@@ -264,21 +278,21 @@ Lets run the highstate again:
   local:
   ----------
       State: - pkg
-      Name:      fail2ban
+      Name:      install_fail2ban
       Function:  installed
           Result:    True
           Comment:   Package fail2ban is already installed
           Changes:
   ----------
       State: - pkg
-      Name:      nginx
+      Name:      install_nginx
       Function:  installed
           Result:    True
           Comment:   Package nginx is already installed
           Changes:
   ----------
       State: - service
-      Name:      fail2ban
+      Name:      fail2ban_service
       Function:  running
           Result:    True
           Comment:   The service fail2ban is already running
@@ -289,26 +303,38 @@ Awesome, now things are looking a lot better! Lets move on to managing our sshd_
 
 .. code-block:: yaml
 
-  ssh:
-    pkg:
-      - installed
-    service:
-      - running
+  install_ssh:
+    pkg.installed:
+      - name: ssh 
+
+  ssh_service:
+    service.running:
+      - enable: True
+      - name: ssh
       - require:
-        - pkg: ssh
+        - pkg: install_ssh
       - watch:
-        - file: /etc/ssh/sshd_config
+        - file: sshd_config
 
-
-  /etc/ssh/sshd_config:
-    file:
-      - managed
+  sshd_config:
+    file.managed:
+      - name: /etc/ssh/sshd_config
       - source: salt://ssh/sshd_config
       - mode: '0644'
       - user: root
       - group: root
       - require:
-        - pkg: ssh
+        - pkg: install_ssh
+
+Add our new ssh content to the top.sls:
+
+.. code-block:: yaml
+
+  base:
+    '*':
+      - nginx
+      - fail2ban
+      - ssh
 
 Ok we've done quite a bit here. So we install the package, and ensure the service is running, and the requires are in place, and we're watching our sshd_config file. We also set up the sshd_config so that all our changes get applied properly. You'll notice that I've put single quotes around the mode, due to the way YAML is formatted, you can't have a leading 0 or it treats the value like a hexadecimal value, so just wrap it in single quotes. Let's see what our output looks like now:
 
@@ -317,42 +343,42 @@ Ok we've done quite a bit here. So we install the package, and ensure the servic
   local:
   ----------
       State: - pkg
-      Name:      ssh
+      Name:      install_ssh
       Function:  installed
           Result:    True
           Comment:   Package ssh is already installed
           Changes:
   ----------
       State: - file
-      Name:      /etc/ssh/sshd_config
+      Name:      sshd_config
       Function:  managed
           Result:    True
           Comment:   File /etc/ssh/sshd_config is in the correct state
           Changes:
   ----------
       State: - pkg
-      Name:      fail2ban
+      Name:      install_fail2ban
       Function:  installed
           Result:    True
           Comment:   Package fail2ban is already installed
           Changes:
   ----------
       State: - pkg
-      Name:      nginx
+      Name:      install_nginx
       Function:  installed
           Result:    True
           Comment:   Package nginx is already installed
           Changes:
   ----------
       State: - service
-      Name:      fail2ban
+      Name:      fail2ban_service
       Function:  running
           Result:    True
           Comment:   The service fail2ban is already running
           Changes:
   ----------
       State: - service
-      Name:      ssh
+      Name:      ssh_service
       Function:  running
           Result:    True
           Comment:   The service ssh is already running
@@ -365,14 +391,14 @@ Awesome, so everything seems to be going well, lets modify our /srv/salt/ssh/ssh
   local:
   ----------
       State: - pkg
-      Name:      ssh
+      Name:      install_ssh
       Function:  installed
           Result:    True
           Comment:   Package ssh is already installed
           Changes:
   ----------
       State: - file
-      Name:      /etc/ssh/sshd_config
+      Name:      sshd_config
       Function:  managed
           Result:    True
           Comment:   File /etc/ssh/sshd_config updated
@@ -390,28 +416,28 @@ Awesome, so everything seems to be going well, lets modify our /srv/salt/ssh/ssh
 
   ----------
       State: - pkg
-      Name:      fail2ban
+      Name:      install_fail2ban
       Function:  installed
           Result:    True
           Comment:   Package fail2ban is already installed
           Changes:
   ----------
       State: - pkg
-      Name:      nginx
+      Name:      install_nginx
       Function:  installed
           Result:    True
           Comment:   Package nginx is already installed
           Changes:
   ----------
       State: - service
-      Name:      fail2ban
+      Name:      fail2ban_service
       Function:  running
           Result:    True
           Comment:   The service fail2ban is already running
           Changes:
   ----------
       State: - service
-      Name:      ssh
+      Name:      ssh_service
       Function:  running
           Result:    True
           Comment:   Service restarted
@@ -423,9 +449,9 @@ Let's create /srv/salt/python/ so we can get Python and the other associated ite
 
 .. code-block:: yaml
 
-  python:
-    pkg:
-      - installed
+  install_python:
+    pkg.installed:
+      - name: python
 
 Super easy right? Just make sure python is installed. 
 
@@ -433,9 +459,9 @@ Let's get pip installed as well, let's make another sls, /srv/salt/python/pip.sl
 
 .. code-block:: yaml
 
-  python-pip:
-    pkg:
-      - installed
+  install_python_pip:
+    pkg.installed:
+      - name: python-pip
 
 And modify the top.sls again:
 
@@ -454,7 +480,7 @@ Run our ``salt-call --local state.highstate -l debug`` again and we get this nic
 .. code-block:: bash
 
   State: - pkg
-  Name:      python-pip
+  Name:      install_python_pip
   Function:  installed
       Result:    True
       Comment:   Package python-pip installed
@@ -502,9 +528,9 @@ Ok so we've got pip installed, lets get virtualenv taken care of. This is just a
 
 .. code-block:: yaml
 
-  python-virtualenv:
-    pkg:
-      - installed
+  install_python_virtualenv:
+    pkg.installed:
+      - name: pyton-virtualenv
 
 Let's modify our top.sls to look like this (add virtualenv, and get rid of pip for the time being):
 
@@ -522,7 +548,7 @@ Let's run it with ``salt-call --local state.highstate -l debug`` again:
 .. code-block:: bash
 
     State: - pkg
-    Name:      python-virtualenv
+    Name:      install_python_virtualenv
     Function:  installed
         Result:    True
         Comment:   The following packages were installed/updated: python-virtualenv.
@@ -534,9 +560,9 @@ Next we want to install git, so create /srv/salt/git/init.sls (you'll need to cr
 
 .. code-block:: yaml
 
-  git:
-    pkg:
-      - installed
+  install_git:
+    pkg.installed:
+      - name: git
 
 Easy enough stuff, at some point we'll look at coming back to make this OS agnostic, but for now we don't want to get too crazy.
 
@@ -556,42 +582,40 @@ Ok we have virtualenv installed, and git to pull down our content. So the next s
     - python.virtualenv
 
   hungryadmin_venv:
-    virtualenv:
-      - managed
+    virtualenv.managed:
       - name: {{ hungryadmin_venv }}
       - runas: {{ hungryadmin_user }}
       - require:
-        - pkg: python-virtualenv
+        - pkg: install_python_virtualenv
 
-  hungryadmin:
-    git:
-      - latest
+  hungryadmin_git:
+    git.latest:
       - name: https://github.com/gravyboat/hungryadmin.git
       - target: {{ hungryadmin_proj }}
       - runas: {{ hungryadmin_user }}
       - force: True
       - require:
-        - pkg: git
+        - pkg: install_git
         - virtualenv: hungryadmin_venv
+      - watch_in:
+          - service: nginx_service
 
   refresh_pelican:
-    cmd:
-      - run
+    cmd.run:
       - user: {{ hungryadmin_user }}
       - name: {{ hungryadmin_venv }}/bin/pelican -s {{hungryadmin_proj}}/pelicanconf.py
       - require:
         - virtualenv: hungryadmin_venv
       - watch:
-        - git: hungryadmin
+        - git: hungryadmin_git
 
   hungryadmin_pkgs:
-    pip:
-      - installed
+    pip.installed:
       - bin_env {{ hungryadmin_venv }}
       - requirements: {{ hungryadmin_proj }}/requirements.txt
       - require:
-        - git: hugrnyadmin
-        - pkg: python-pip
+        - git: hungryadmin_git
+        - pkg: install_python_pip
         - virtualenv: hugryadmin_venv
 
 Ok, so we've now got an app.sls that's going to take care of a lot of things. Now I know you're thinking "what is all this pillar crap that he's using?", well we are going to get to that in a minute, the key thing here is that you understand what each of these items do, it's pretty easy to tell right? for the hungryadmin_venv variable, it's clearly the location of our virtual environment, and our hungryadmin_user, is simply our user for the virtual environment. The only slightly confusing one here is hungryadmin_proj, but even that we can figure out. We know we're going to pull our git content into the virtual environment right? So we know it has something to do with that.
@@ -678,68 +702,65 @@ for the app.sls:
     - python.virtualenv
 
   {{ hungryadmin_user }}:
-  user:
-    - present
+  user.present:
     - shell: /bin/bash
     - home: /home/{{ hungryadmin_user }}
     - uid: 2150
     - gid: 2150
     - require:
       - group: {{ hungryadmin_user }}
-  group:
-    - present
+  group.present:
     - gid: 2150
 
 
   hungryadmin_venv:
-    virtualenv:
-      - managed
+    virtualenv.managed:
       - name: {{ hungryadmin_venv }}
       - runas: {{ hungryadmin_user }}
       - require:
-        - pkg: python-virtualenv
-        - user: {{ hungryadmin_user }}
+        - pkg: install_python_virtualenv
+        - user: {{ hungryadmin_user }}_user
 
-  hungryadmin:
-    git:
-      - latest
+  hungryadmin_git:
+    git.latest:
       - name: https://github.com/gravyboat/hungryadmin.git
       - target: {{ hungryadmin_proj }}
       - runas: {{ hungryadmin_user }}
       - force: True
       - require:
-        - pkg: git
+        - pkg: install_git
         - virtualenv: hungryadmin_venv
       - watch_in:
-        - service: nginx
+        - service: nginx_service
 
   hungryadmin_pkgs:
-    pip:
-      - installed
+    pip.installed:
       - bin_env: {{ hungryadmin_venv }}
       - requirements: {{ hungryadmin_proj }}/requirements.txt
       - require:
-        - git: hungryadmin
-        - pkg: python-pip
+        - git: hungryadmin_git
+        - pkg: install_python_pip
         - virtualenv: hungryadmin_venv
 
-  /etc/nginx/conf.d/hungryadmin.conf:
-    file:
-      - managed
+  hungryadmin_nginx_conf:
+    file.managed:
+      - name: /etc/nginx/conf.d/hungryadmin.conf
       - source: salt://hungryadmin/files/hungryadmin.conf
       - template: jinja
       - user: root
       - group: root
       - mode: 644
       - require:
-        - git: hungryadmin
-        - pkg: nginx
+        - git: hungryadmin_git
+        - pkg: install_nginx
       - watch_in:
-        - service: nginx
+        - service: nginx_service
 
-  /etc/nginx/sites-enabled/default:
-    file:
-      - absent
+  remove_default_sites_enabled:
+    file.managed:
+      - name: /etc/nginx/sites-enabled/default
+      - watch_in:
+        - service: nginx_service
 
 We've now added our conf file for this host, but we need to write that conf file now, so create /srv/salt/hungryadmin/files, and then hungryadmin.conf inside of that. It's content's look like this:
 
@@ -775,6 +796,124 @@ We've now added our conf file for this host, but we need to write that conf file
           expires 1y;
       }
   }
+
+Now we need to make sure the nginx_service items work correctly. We'll also do some nginx configuration
+changes to improve performance:
+
+The nginx init should now look like this:
+
+.. code-block:: yaml
+
+ install_nginx:
+  pkg.installed:
+    - name: nginx
+
+  nginx_service:
+    service.running:
+      - name: nginx
+      - enable: True
+      - reload: True
+
+  nginx_config:
+    file.managed:
+      - name: /etc/nginx/nginx.conf
+      - source: salt://nginx/files/nginx.conf
+      - user: root
+      - group: root
+      - mode: 644 
+      - watch_in:
+        - service: nginx_service 
+
+We'll also need to create the nginx.conf file:
+
+.. code-block:: bash
+
+  user www-data;
+  worker_processes 4;
+  pid /run/nginx.pid;
+
+  events {
+      worker_connections 768;
+      # multi_accept on;
+  }
+
+  http {
+
+      ##
+      # Basic Settings
+      ##
+
+      sendfile on;
+      tcp_nopush on;
+      tcp_nodelay on;
+      keepalive_timeout 65;
+      types_hash_max_size 2048;
+      # server_tokens off;
+
+      # server_names_hash_bucket_size 64;
+      # server_name_in_redirect off;
+
+      include /etc/nginx/mime.types;
+      default_type application/octet-stream;
+
+      ##
+      # Logging Settings
+      ##
+
+      access_log /var/log/nginx/access.log;
+      error_log /var/log/nginx/error.log;
+
+      ##
+      # Gzip Settings
+      ##
+
+      gzip on;
+      gzip_disable "msie6";
+
+      gzip_vary on;
+      gzip_proxied any;
+      gzip_comp_level 9;
+      gzip_buffers 32 4k;
+      gzip_types
+          text/plain
+          text/css
+          text/js
+          text/xml
+          text/javascript
+          application/javascript
+          application/x-javascript
+          application/json
+          application/xml
+          application/xml+rss;
+
+      # gzip_http_version 1.1;
+      # gzip_types text/plain text/css application/json application/x-javascript text/xml application/xml application/xml+rss text/javascript;
+
+      ##
+      # nginx-naxsi config
+      ##
+      # Uncomment it if you installed nginx-naxsi
+      ##
+
+      #include /etc/nginx/naxsi_core.rules;
+
+      ##
+      # nginx-passenger config
+      ##
+      # Uncomment it if you installed nginx-passenger
+      ##
+
+      #passenger_root /usr;
+      #passenger_ruby /usr/bin/ruby;
+
+      ##
+      # Virtual Host Configs
+      ##
+
+      include /etc/nginx/conf.d/*.conf;
+      include /etc/nginx/sites-enabled/*;
+  }
+
 
 Ok. So now you should be able to visit the site if you modify your host file to point towards the IP address, nice job!
 
