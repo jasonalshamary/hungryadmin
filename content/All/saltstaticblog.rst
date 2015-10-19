@@ -915,11 +915,13 @@ We'll also need to create the nginx.conf file:
   }
 
 
-Ok. So now you should be able to visit the site if you modify your host file to point towards the IP address, nice job!
+Once these changes are complete run the highstate and everything should be set to go.
+
+You should be able to visit the site if you modify your host file to point towards the IP address, nice job!
 
 At this point we have our server configured for SSH access, as well as fail2ban, we've got all the required Python items installed for our static blog, we're pulling our content down from GitHub, and we've got nginx configured to serve the content! 
 
-Now we're pretty much done, depending on which blog tool you decide to use, it might be nice to extend how the virtualenv is run in the event it needs to be rebuilt, but I'm sure you're equipped to figure that out now! Lets look at how our directory structure turned out:
+We're pretty much done, depending on which blog tool you decide to use, it might be nice to extend how the virtualenv is run in the event it needs to be rebuilt, but I'm sure you're equipped to figure that out now! Lets look at how our directory structure turned out:
 
 ./pillar:
 hungryadmin.sls  top.sls
@@ -940,7 +942,7 @@ app.sls  files
 hungryadmin.conf
 
 ./salt/nginx:
-init.sls
+init.sls files
 
 ./salt/python:
 init.sls  pip.sls  requirements.txt  virtualenv.sls
