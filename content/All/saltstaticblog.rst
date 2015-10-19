@@ -719,7 +719,7 @@ for the app.sls:
       - runas: {{ hungryadmin_user }}
       - require:
         - pkg: install_python_virtualenv
-        - user: {{ hungryadmin_user }}_user
+        - user: {{ hungryadmin_user }}
 
   hungryadmin_git:
     git.latest:
