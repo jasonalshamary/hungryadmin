@@ -56,7 +56,7 @@ Now I like to run a quick test here to make sure things are working properly, so
 
 If you're following along in the quickstart for the masterless minion, scroll down near the bottom and follow their creation with a few slight modifications (we'll update this later once we have the structure all fleshed out):
 
-/sr/salt/top.sls:
+/srv/salt/top.sls:
 
 .. code-block:: yaml
 
