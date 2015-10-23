@@ -44,7 +44,7 @@ Professional Experience
 
 .. class:: center
 
-**Kissmetrics, October 2014 - Present**
+**Kissmetrics, October 2014 - October 2015**
 
 Operations Engineer
 
