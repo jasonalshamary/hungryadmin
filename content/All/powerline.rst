@@ -36,7 +36,7 @@ https://github.com/gravyboat/powerline-config/powerline
 The key file that no one seems to mention is the `config.json`. This will
 force the actual changes to take effect, and without this file you'll still
 be using the default configuration. While that may work I prefer everything
-aligned on the right side of the screen.
+aligned on the left side of the screen.
 
 Once this is complete check to make sure the linting is fine with
 `powerline-lint` and if everything looks fine restart the daemon with
