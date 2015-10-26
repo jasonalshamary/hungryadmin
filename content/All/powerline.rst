@@ -19,7 +19,8 @@ http://powerline.readthedocs.org/en/master/installation.html
 
 The installation docs are actually pretty good, it's the config docs that are
 confusing. When you restart your terminal after performing the install you
-should now see the powerline prompt. Install powerline-gitstatus:
+should now see the powerline prompt. Install powerline-gitstatus (do not use
+the provided config files):
 
 https://github.com/jaspernbrouwer/powerline-gitstatus#installation
 
