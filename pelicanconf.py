@@ -4,7 +4,7 @@ from __future__ import unicode_literals
 
 AUTHOR = u'Forrest Alvarez'
 SITENAME = u'Hungry Admin'
-SITEURL = 'http://hungryadmin.com'
+SITEURL = 'https://hungryadmin.com'
 
 TIMEZONE = 'GMT'
 
@@ -18,13 +18,13 @@ TRANSLATION_FEED_ATOM = None
 # Blogroll
 LINKS = (('Talks', 'https://speakerdeck.com/gravyboat'),
          ('Pelican', 'http://getpelican.com/'),
-         ('Python.org', 'http://python.org/'),
-         ('Jinja2', 'http://jinja.pocoo.org/'),
-         ('SaltStack', 'http://saltstack.org'),)
+         ('Python.org', 'https://python.org/'),
+         ('Jinja2', 'https://jinja.pocoo.org/'),
+         ('SaltStack', 'https://saltstack.org'),)
 
 # Social widget
-SOCIAL = (('github', 'http://github.com/gravyboat'),
-          ('twitter', 'http://twitter.com/failvarez'),
+SOCIAL = (('github', 'https://github.com/gravyboat'),
+          ('twitter', 'https://twitter.com/failvarez'),
           ('stack-overflow', 'http://stackoverflow.com/users/1263015/forrest'),
           )
 
