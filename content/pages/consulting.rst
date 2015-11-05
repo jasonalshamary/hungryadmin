@@ -6,5 +6,4 @@ Consulting
 .. class:: center
 
 If you need remote consulting I'm available to work with your team. Feel free
-to `email me <mailto:forrest.alvarez@gmail.com>`_. Please do not contact me if
-you are a recruiter.
+to `email me <mailto:forrest.alvarez@gmail.com>`_.
