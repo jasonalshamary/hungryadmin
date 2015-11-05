@@ -1,4 +1,4 @@
-Building a static blog and deploying it with SaltStack
+Building a Static Blog and Deploying it With SaltStack
 ======================================================
 :date: 2013-09-05
 :tags: salt, saltstack, pelican, python, automation, git

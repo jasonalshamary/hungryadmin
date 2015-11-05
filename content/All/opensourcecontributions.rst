@@ -1,5 +1,5 @@
-Contributing to open source, it's easier than you think.
-========================================================
+Contributing to Open Source, it's Easier Than You Think
+=======================================================
 :date: 2013-10-28
 :tags: open source, Salt, GitHub
 
