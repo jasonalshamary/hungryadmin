@@ -23,12 +23,8 @@ So basically the configuration is going to go like this:
 
 4. From there it's all blog content related.
 
-For the completedproject head over to:
+For the completed project head over to:
 https://github.com/gravyboat/hungryadmin-sls
-
-.. note::
-    This tutorial is now enhanced by the masterless reactore post here:
-    `here <http://hungryadmin.com/BLOG_POST_PATH>`.
 
 Our first step is to get salt installed: 
 

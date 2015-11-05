@@ -5,6 +5,6 @@ Consulting
 
 .. class:: center
 
-If you need remote consulting (primarily focusing on SaltStack) I'm available
-to work with your team. Feel free to email me: forrest.alvarez@gmail.com
-Please do not contact me if you are a recruiter.
+If you need remote consulting I'm available to work with your team. Feel free
+to `email me <mailto:forrest.alvarez@gmail.com>`. Please do not contact me if
+you are a recruiter.
