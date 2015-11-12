@@ -3,10 +3,10 @@ Docker, Salt, and Travis CI
 :date: 2015-11-12
 :tags: python, git, docker, saltstack, travis-ci, GitHub
 
-Late last week I was investigating some Docker components and how I could
-integrate them with Salt. Looking on the internet I found a lot of tutorials
-that talked about different components, but couldn't find anything that
-included an actual working project that showed how all the components fit
+Late last week I was investigating some Docker deployment components and how I
+could integrate them with Salt. Looking on the internet I found a lot of
+tutorials that talked about different components, but couldn't find anything
+that included an actual working project that showed how all the components fit
 together. There also wasn't a ton out there that used software that was
 easily accessible and free, a lot of tutorials included some sort of third
 party that you had to pay for to manage your Docker containers, and I wasn't
