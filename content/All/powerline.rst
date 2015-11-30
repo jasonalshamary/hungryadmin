@@ -24,7 +24,7 @@ the provided config files):
 
 https://github.com/jaspernbrouwer/powerline-gitstatus#installation
 
-A ``.config`` direction for powerline should have been created, if it
+A ``.config`` directory for powerline should have been created, if it
 wasn't for some reason create the powerline directory inside your ``.config``
 directory.
 
