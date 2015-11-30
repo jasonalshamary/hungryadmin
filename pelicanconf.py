@@ -37,6 +37,7 @@ PAGE_DIR = ('content/pages')
 
 # Theme
 THEME = "themes/pelican-bootstrap3"
+PYGMENTS_STYLE = 'solarizeddark'
 
 PLUGINS = ['minification', ]
 GITHUB_URL = 'https://github.com/gravyboat'
