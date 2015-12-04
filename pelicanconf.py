@@ -41,8 +41,12 @@ THEME = "themes/pelican-bootstrap3"
 PYGMENTS_STYLE = 'solarizeddark'
 # Custom css
 CUSTOM_CSS = 'static/custom.css'
+STATIC_PATHS = ['extra/custom.css']
+EXTRA_PATH_METADATA = {
+        'extra/custom.css': {'path': 'static/custom.css'}
+}
 
 # Other
-PLUGINS = ['minification', ]
+PLUGINS = ['minification']
 GITHUB_URL = 'https://github.com/gravyboat'
 MENUITEMS = (('Talks', 'https://speakerdeck.com/gravyboat'),)
