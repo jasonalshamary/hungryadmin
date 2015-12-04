@@ -37,8 +37,12 @@ PAGE_DIR = ('content/pages')
 
 # Theme
 THEME = "themes/pelican-bootstrap3"
+# Code block theme
 PYGMENTS_STYLE = 'solarizeddark'
+# Custom css
+CUSTOM_CSS = 'static/custom.css'
 
+# Other
 PLUGINS = ['minification', ]
 GITHUB_URL = 'https://github.com/gravyboat'
 MENUITEMS = (('Talks', 'https://speakerdeck.com/gravyboat'),)
