@@ -32,7 +32,7 @@ limited to off-topic chatter.
 Do you really need an office culture?
 -------------------------------------
 
-This brings up the question that I ask myself every time I do on of these
+This brings up the question that I ask myself every time I do one of these
 interviews, why do these people care so much about office culture? Is the
 culture of your office supposed to dictate whether people are moral or not?
 Does the culture somehow enforce how people are supposed to act instead of
