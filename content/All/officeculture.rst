@@ -84,5 +84,5 @@ It's hard to do but it's something that you have to reflect. At that point
 either other people will start getting on board (creating the sect I spoke of
 earlier), or they won't and it's time to go elsewhere. If a company can't
 realistically grow and develop their culture due to some bad apples or stubborn
-C level executives than how can they continue to grow and evolve as an
+C level executives then how can they continue to grow and evolve as an
 organization?
