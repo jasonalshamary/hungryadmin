@@ -25,7 +25,7 @@ pretty simple to implement as it was really just a Dockerfile and a
 The test and prod environments were a bit more work to implement (the whole
 project took me about 4 days until I was satisfied with the functionality) as
 they implemented automated Docker pushes to the Docker hub, as well as
-deployments to the actual servers via Salt when an update image appeared on the
+deployments to the actual servers via Salt when an updated image appeared on the
 Docker hub. Updating the .travis.yml to support pushing to the Docker hub was
 pretty simple to implement thanks to the fantastic Travis-ci docs, but there's
 still the sticking point of environments using different .travis.yml files on
@@ -38,17 +38,17 @@ component called the reactor which allows you to listen for events and then
 perform actions based on those events. Unfortunately the reactor doesn't
 support masterless minions at this point in time, so I had to implement
 a master server (probably good in this situation otherwise I would have had
-to set up some sort of proxy to him multiple machines within the same
+to set up some sort of proxy to hit multiple machines within the same
 environment). This took a good amount of time to ensure everything was working
 properly (ensuring Docker was properly installed and systems were running) as I
 encountered a few oddities with how Docker runs on CentOS machines which I was
 using as my main test platform. I added Ubuntu support specifically to avoid
 this problem.
 
-After I confirmed that pushes were being tested, containers built, being pushed
+After I confirmed that pushes were being tested, containers built, pushed
 to the hub, and then deployed to the associated environments I was happy enough
 to publicize the repo so other people could poke it. The biggest goal for this
-project I wanted to achieve was a repo where you could look at it, and see all
+project I wanted to achieve was a repo where you could look at it and see all
 of the components that were required (though hopefully not store them in the
 same repo like I did in my example). I believe I've done that at this point
 which will hopefully help people improve their deployment processes and 
