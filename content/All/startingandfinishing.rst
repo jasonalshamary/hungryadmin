@@ -54,7 +54,7 @@ for tracking my time and providing me with stats on projects.
 
 .. image:: images/pomodoro_stats.PNG
     :alt: Pomodoro Data
-    :align: middle
+    :align: center
 
 In total it took me 55 pomodoros (23 hours) to complete the project, there is
 probably an additional hour or two of work where I forgot to set the timer.
@@ -77,7 +77,7 @@ task updates so there could be some improvement there.
 
 .. image:: images/trello_board.PNG
     :alt: Trello Board
-    :align: middle
+    :align: center
 
 When I created this project initially I also didn't write a project spec, which
 I think was a bit of an oversight on my part. For most projects I create a spec
