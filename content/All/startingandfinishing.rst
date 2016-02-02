@@ -52,7 +52,8 @@ break after every 25 minute block, but sometimes I just set another 25 minute
 timer as I'm in the middle of things. Either way it works exceptionally well
 for tracking my time and providing me with stats on projects.
 
-![Pomodoro Data]({filename}/images/pomodoro_stats.PNG)
+.. image:: pomodoro_stats.PNG
+    :alt: Pomodor Data
 
 In total it took me 55 pomodoros (23 hours) to complete the project, there is
 probably an additional hour or two of work where I forgot to set the timer.
@@ -73,7 +74,8 @@ been broken up into smaller tasks, again this will be an area I focus on for
 the next project. I also wasn't as descriptive as I should have been for my
 task updates so there could be some improvement there.
 
-![Trello Board]({filename}/images/trello_board.PNG)
+.. image:: trello_board.PNG
+    :alt: Trello Board
 
 When I created this project initially I also didn't write a project spec, which
 I think was a bit of an oversight on my part. For most projects I create a spec
@@ -130,9 +132,15 @@ The Conclusion
 --------------
 
 I'm very happy with how this application turned out. I don't know yet whether
-it will be a success or never see a return, but I hope the design and
-mentality the app provides is something that users enjoy. Most importantly I'm
+it will be a success or never see a return, but I hope the design the app
+provides is something that users enjoy. Most importantly I'm
 pleased that I was able to complete the project as the scale was slightly
-larger than personal projects I've worked on in the past. If you have any
-questions or comments please feel free to reach out to me on Twitter or the
-other forms of communication included on my blog.
+larger than personal projects I've worked on in the past. Reflecting on what
+made this project successful boils down to breaking the work into small
+manageable tasks and then completing those tasks. Combining this along with
+both new and familiar technologies presented enough familiarity and knowledge
+growth potential to leave me satisfied regardless of how the site performs
+financially.
+
+If you have any questions or comments please feel free to reach
+out to me on Twitter or the other forms of communication included on my blog.
