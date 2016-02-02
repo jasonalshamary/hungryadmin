@@ -41,7 +41,7 @@ THEME = "themes/pelican-bootstrap3"
 PYGMENTS_STYLE = 'solarizeddark'
 # Custom css
 CUSTOM_CSS = 'static/custom.css'
-STATIC_PATHS = ['extra/custom.css']
+STATIC_PATHS = ['extra/custom.css', 'images']
 EXTRA_PATH_METADATA = {
         'extra/custom.css': {'path': 'static/custom.css'}
 }
