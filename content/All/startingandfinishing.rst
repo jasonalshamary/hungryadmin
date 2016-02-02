@@ -52,8 +52,9 @@ break after every 25 minute block, but sometimes I just set another 25 minute
 timer as I'm in the middle of things. Either way it works exceptionally well
 for tracking my time and providing me with stats on projects.
 
-.. image:: pomodoro_stats.PNG
-    :alt: Pomodor Data
+.. image:: images/pomodoro_stats.PNG
+    :alt: Pomodoro Data
+    :align: center
 
 In total it took me 55 pomodoros (23 hours) to complete the project, there is
 probably an additional hour or two of work where I forgot to set the timer.
@@ -74,8 +75,9 @@ been broken up into smaller tasks, again this will be an area I focus on for
 the next project. I also wasn't as descriptive as I should have been for my
 task updates so there could be some improvement there.
 
-.. image:: trello_board.PNG
+.. image:: images/trello_board.PNG
     :alt: Trello Board
+    :align: center
 
 When I created this project initially I also didn't write a project spec, which
 I think was a bit of an oversight on my part. For most projects I create a spec
