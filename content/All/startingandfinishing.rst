@@ -77,6 +77,7 @@ task updates so there could be some improvement there.
 
 .. image:: images/trello_board.PNG
     :alt: Trello Board
+    :scale: 50 %
     :align: center
 
 When I created this project initially I also didn't write a project spec, which
