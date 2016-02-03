@@ -77,8 +77,8 @@ task updates so there could be some improvement there.
 
 .. image:: images/trello_board.PNG
     :alt: Trello Board
-    :height: 840px
-    :width: 1031px
+    :height: 1031px
+    :width: 840px
     :scale: 50
     :align: center
 
