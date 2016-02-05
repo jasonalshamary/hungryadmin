@@ -1,0 +1,69 @@
+==================================================================
+https://keybase.io/gravyboat
+--------------------------------------------------------------------
+
+I hereby claim:
+
+  * I am an admin of https://hungryadmin.com
+  * I am gravyboat (https://keybase.io/gravyboat) on keybase.
+  * I have a public key with fingerprint 456E 155F BBA3 C497 0498  06B0 39F4 94F9 2F6C 3A7E
+
+To do so, I am signing this object:
+
+{
+    "body": {
+        "key": {
+            "eldest_kid": "0101a5643a9b0fcc460552ca1d46ca6f60088542461f13d330f1a7e82be7c58d29550a",
+            "fingerprint": "456e155fbba3c497049806b039f494f92f6c3a7e",
+            "host": "keybase.io",
+            "key_id": "39f494f92f6c3a7e",
+            "kid": "0101a5643a9b0fcc460552ca1d46ca6f60088542461f13d330f1a7e82be7c58d29550a",
+            "uid": "f497ca24e9416cdd30b40c4f748e8119",
+            "username": "gravyboat"
+        },
+        "service": {
+            "hostname": "hungryadmin.com",
+            "protocol": "https:"
+        },
+        "type": "web_service_binding",
+        "version": 1
+    },
+    "ctime": 1454642261,
+    "expire_in": 157680000,
+    "prev": "534abe3ec6093ebf18bf73859e740d7f347f1acd23737c484a6a437730b81f72",
+    "seqno": 4,
+    "tag": "signature"
+}
+
+which yields the signature:
+
+-----BEGIN PGP MESSAGE-----
+Version: Keybase OpenPGP v2.0.49
+Comment: https://keybase.io/crypto
+
+yMIxAnicrVJbSBVBGD6aZh6KNLzQ5aWNeslsd2f2djTIgpDIS1SGZB5nZ2ePm7p7
+3LNHPVgYBRGFZaVRhtH9Yi9FN6GLF0QyK9RISBAyyEsvEWQFZjUr9dZj8zLMP9/3
+/d/383cvmOPxRhWPjecsjCtIjerrPBf2FNxL2lHLqJYWYXy1TBmZvUi5RkKOv8zQ
+GB/DciyHBBECpKisjjEUWUHgMeI0KGIk6iLLyrIAeShyOgc0AFidQxKReZVIWJA1
+XhEEFjFpjG6YAWIHbcN0qCwURMIJgq6qCGCoSCxUZFZUWaDoUIG6wusiBlSHEkut
+kMug5lQUIumGRWv04Z+19w/8f/YdnpWjXSSMeEgUyIlY0wCrQhZDXYIykTlOcYEh
+YpuoglB0wEZVEdVCDrMvjaHlKgMTd7JulD+Q0rAZsCNIqzDMdGxVUH7QthwLW+Xu
+p+MEQz6X7ESCLrqaqP4/On7VMDU6S8qoInbIsEzGx1EkdgxXmIMCFCHPi1waQ2qC
+hk38hosQJFFm6XH7kCoqKQCIVAIIFlkFEFXnZFWXgCwoRIKsJukASnQiWOOBBCQM
+ZYhEBIEk0eQyp0s84yarNC3GB6lNFKCSISNgIidsE2ZfV0dRjCfK65kbG+3umMcb
+n/B38xoPz/OcSHj0sOVYTWF3Jey9Gnv6QMvm/u0pU+vy+kcm8zcx7cd/3bqxpZOZ
+Wfo+erJpZfapK6vacz7N3Z2e2/qltSm74trN3vbkhjOP70QfXZLckTH/68aoce+L
+pJ33xiq3xRUKi5TanvrhzLrI6BdhxeXY7IzeXSn51viD+uqP92MS689e+n6k6JSZ
+MrLo+XLj9ao2vm7N0PTE2pOH8l4W9x2fHh7Mr+syzJafNUdr9ebcaH/JnieD3556
+IlkDzQcn91Y/u9v5LuvuhSBsTAhNgdwPQ23xF39s9fQ0pXet1xIzr5e83bBsIsH7
+qig88Pn+am/M/Lg3qQ1jS2NHF99ujZvZP5B17nxzzW8LFz3L
+=xFIJ
+-----END PGP MESSAGE-----
+
+And finally, I am proving ownership of this host by posting or
+appending to this document.
+
+View my publicly-auditable identity here: https://keybase.io/gravyboat
+
+==================================================================
+
