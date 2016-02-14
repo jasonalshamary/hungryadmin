@@ -3,7 +3,8 @@ About Me
 
 :slug: About Me
 
-Welcome to my blog, my name is Forrest, I've been working in the world of Linux for
-approximately five years now. I'm a big fan of automation, and Python is by
-far my favorite scripting language. in my free time I contribute to
-open-source projects, hike, practice yoga, and play the electric bass.
+Welcome to my blog, my name is Forrest (you can catch me on IRC at the same),
+I've been working in the world of Linux for approximately six years now. I'm a
+big fan of automation, Python, and improving myself. in my free time I
+contribute to open-source projects, hike, practice yoga, and play the
+electric bass.
