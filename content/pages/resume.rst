@@ -7,7 +7,7 @@ Resume
 
 **Forrest Alvarez**
 
-**Linux Systems Engineer**
+**DevOps Engineer**
 
 Open source advocate, SaltStack contributor, and documentation fanatic.
 Dedicated to improving development pipelines and processes to help both
