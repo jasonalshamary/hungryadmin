@@ -111,7 +111,7 @@ I've used Flask for several apps in the past, and decided to use it again for
 this project. Flask is easy to use and allowed me to spend a majority of my
 time elsewhere as the overall structure of the app is not extremely
 complicated. I'm proficient enough in Python that the app itself didn't
-present many problems outside of general design constraints and prepping for
+present many problems outside of general design constraints and prepping
 for future modifications/expansion if it is required. I used Sqlite for the
 database and Nginx with Gunicorn for serving the content up as the performance
 provided is exceptional and easy to configure.
