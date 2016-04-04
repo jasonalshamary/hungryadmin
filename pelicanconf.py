@@ -17,6 +17,7 @@ TRANSLATION_FEED_ATOM = None
 
 # Blogroll
 LINKS = (('Talks', 'https://speakerdeck.com/gravyboat'),
+         ('Gratipay', 'https://gratipay.com/~gravyboat/'),
          ('Pelican', 'http://getpelican.com/'),
          ('Python.org', 'https://python.org/'),
          ('Jinja2', 'https://jinja.pocoo.org/'),
@@ -49,4 +50,5 @@ EXTRA_PATH_METADATA = {
 # Other
 PLUGINS = ['minification']
 GITHUB_URL = 'https://github.com/gravyboat'
-MENUITEMS = (('Talks', 'https://speakerdeck.com/gravyboat'),)
+MENUITEMS = (('Talks', 'https://speakerdeck.com/gravyboat'),
+             ('Gratipay', 'https://gratipay.com/~gravyboat/'),)
