@@ -56,7 +56,7 @@ Operations Engineer
   projects
 
 - Technologies: AWS (S3, RDS, EC2, Route 53, VPC, CloudFormation), Ruby, Rails,
-  SaltStack, Tokyo Cabinet, PostgreSQL, Nagios, Python
+  SaltStack, Tokyo Cabinet, PostgreSQL, Nagios, Python, Git
 
 **Flowroute Inc, April 2014 - September 2014**
 
@@ -74,7 +74,7 @@ DevOps Engineer
   deployment time, and increasing the number of deployments
 
 - Technologies: AWS (S3, EC2, CloudFormation, VPC), Python, Django, SaltStack,
-  PostgreSQL
+  PostgreSQL, Git
 
 .. class:: center
 
@@ -95,7 +95,7 @@ Linux Systems Administrator - Information Systems
   release, and rebuild the associated repository to ensure the latest release
   was available during machine builds without manual intervention
 
-- Technologies: Java, MySQL, SaltStack, Oracle DB, Python, Perl, Bash
+- Technologies: Java, MySQL, SaltStack, Oracle DB, Python, Perl, Bash, SVN
 
 
 .. class:: center
@@ -134,7 +134,7 @@ Linux Systems Engineer - Information Systems
 - Familiar with working in a satellite office and interacting with team
   members distributed throughout multiple office locations and timezones
 
-- Technologies: MySQL, Puppet, Python, PHP, C, Bash
+- Technologies: MySQL, Puppet, Python, PHP, C, Bash, Git, SVN, CVS
 
 .. class:: center
 
