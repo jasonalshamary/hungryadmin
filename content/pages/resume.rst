@@ -18,8 +18,8 @@ developers and community members attain their goals.
 Proficiencies
 =============
 
-- Linux
-- Scripting skills (Python and Bash)
+- Linux systems (CentOS, RHEL, Ubuntu, Debian)
+- Scripting skills (Python, Bash)
 - RPM/deb creation
 - Troubleshooting / Root cause analysis
 - Critical production service environments
@@ -55,6 +55,9 @@ Operations Engineer
 - Update and modularize Salt states to allow for ease of use between multiple
   projects
 
+- Technologies: AWS (S3, RDS, EC2, Route 53, VPC, CloudFormation), Ruby, Rails,
+  SaltStack, Tokyo Cabinet, PostgreSQL, Nagios, Python
+
 **Flowroute Inc, April 2014 - September 2014**
 
 DevOps Engineer
@@ -69,6 +72,9 @@ DevOps Engineer
 
 - Improve the process by which web deployments are accomplished, reducing
   deployment time, and increasing the number of deployments
+
+- Technologies: AWS (S3, EC2, CloudFormation, VPC), Python, Django, SaltStack,
+  PostgreSQL
 
 .. class:: center
 
@@ -88,6 +94,8 @@ Linux Systems Administrator - Information Systems
 - Designed a Python script to provide developers with the latest official java
   release, and rebuild the associated repository to ensure the latest release
   was available during machine builds without manual intervention
+
+- Technologies: Java, MySQL, SaltStack, Oracle DB, Python, Perl, Bash
 
 
 .. class:: center
@@ -123,9 +131,10 @@ Linux Systems Engineer - Information Systems
 - Member of Enterprise Linux Forum that presented open source alternatives,
   and pushed for open source contributions
 
-- Familiar with working in a satellite office and interacting with team 
+- Familiar with working in a satellite office and interacting with team
   members distributed throughout multiple office locations and timezones
 
+- Technologies: MySQL, Puppet, Python, PHP, C, Bash
 
 .. class:: center
 
