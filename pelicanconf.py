@@ -19,8 +19,7 @@ TRANSLATION_FEED_ATOM = None
 LINKS = (('Talks', 'https://speakerdeck.com/gravyboat'),
          ('Gratipay', 'https://gratipay.com/~gravyboat/'),
          ('Pelican', 'http://getpelican.com/'),
-         ('Python.org', 'https://python.org/'),
-         ('Jinja2', 'https://jinja.pocoo.org/'),
+         ('Remote-First (my job site)', 'https://remote-first.com/'),
          ('SaltStack', 'https://saltstack.org'),)
 
 # Social widget
