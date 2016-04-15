@@ -56,7 +56,7 @@ Operations Engineer
   projects
 
 - Technologies: AWS (S3, RDS, EC2, Route 53, VPC, CloudFormation), Ruby, Rails,
-  SaltStack, Tokyo Cabinet, PostgreSQL, Nagios, Python, Git
+  SaltStack, Tokyo Cabinet, PostgreSQL, Nagios, Python, Git, Jenkins, Vagrant
 
 **Flowroute Inc, April 2014 - September 2014**
 
@@ -74,7 +74,7 @@ DevOps Engineer
   deployment time, and increasing the number of deployments
 
 - Technologies: AWS (S3, EC2, CloudFormation, VPC), Python, Django, SaltStack,
-  PostgreSQL, Git
+  PostgreSQL, Git, Jenkins, LXC, Vagrant
 
 .. class:: center
 
