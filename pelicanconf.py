@@ -19,7 +19,6 @@ TRANSLATION_FEED_ATOM = None
 LINKS = (('Talks', 'https://speakerdeck.com/gravyboat'),
          ('Gratipay', 'https://gratipay.com/~gravyboat/'),
          ('Pelican', 'http://getpelican.com/'),
-         ('Remote-First (my job site)', 'https://remote-first.com/'),
          ('SaltStack', 'https://saltstack.org'),)
 
 # Social widget
@@ -27,6 +26,10 @@ SOCIAL = (('github', 'https://github.com/gravyboat'),
           ('twitter', 'https://twitter.com/failvarez'),
           ('stack-overflow', 'http://stackoverflow.com/users/1263015/forrest'),
           )
+
+# Projects
+PROJECTS = (('Remote-First (my job site)', 'https://remote-first.com/'),
+           )
 
 DEFAULT_PAGINATION = 10
 
