@@ -19,7 +19,7 @@ Proficiencies
 =============
 
 - Linux systems (CentOS, RHEL, Ubuntu, Debian)
-- Scripting skills (Python, Bash)
+- Scripting skills (Python)
 - RPM/deb creation
 - Troubleshooting / Root cause analysis
 - Critical production service environments
