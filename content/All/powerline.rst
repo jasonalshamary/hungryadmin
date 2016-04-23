@@ -31,7 +31,7 @@ directory.
 Once you've created the powerline directory copy the contents from my repo
 in the powerline directory to your powerline directory:
 
-https://github.com/gravyboat/powerline-config/powerline
+https://github.com/gravyboat/powerline-config
 
 The key file that no one seems to mention is the ``config.json``. This will
 force the actual changes to take effect, and without this file you'll still
