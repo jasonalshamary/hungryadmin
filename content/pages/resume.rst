@@ -49,7 +49,7 @@ Professional Experience
 Operations Engineer
 
 - Implement a fully virtualized (Vagrant) development environment allowing for
-  collaboration and repeatable process between developers with shorter
+  collaboration and repeatable processes between developers with shorter
   onboarding times
 
 - Update and modularize Salt states to allow for ease of use between multiple
@@ -91,8 +91,8 @@ Linux Systems Administrator - Information Systems
   sequence, reducing the time that restart procedures take, and eliminating
   involvement of an entire team of administrators
 
-- Designed a Python script to provide developers with the latest official java
-  release, and rebuild the associated repository to ensure the latest release
+- Designed a Python script to provide developers with the latest official Java
+  release, and rebuild the associated repository to ensure the release
   was available during machine builds without manual intervention
 
 - Technologies: Java, MySQL, SaltStack, Oracle DB, Python, Perl, Bash, SVN
@@ -125,7 +125,7 @@ Linux Systems Engineer - Information Systems
   performance improvements to shared hosting product
 
 - Created and maintained thorough internal wiki documentation of the
-  architectural design, business logic and operational processes of systems
+  architectural design, business logic, and operational processes of systems
   engineering
 
 - Member of Enterprise Linux Forum that presented open source alternatives,
@@ -142,7 +142,7 @@ Linux Systems Engineer - Information Systems
 
 Shared Hosting Support - Advanced Hosting Support
 
-- Assisted customers by phone, email and trouble ticket within specified
+- Assisted customers by phone, email, and trouble ticket within specified
   SLAs with a strong focus on customer service
 
 - Identified and communicated software or networking issues leading to
@@ -151,6 +151,6 @@ Shared Hosting Support - Advanced Hosting Support
 - Consistently top tier on team for both number of customer contacts and
   quality of service per contact
 
-- Assisted, trained and lead other shared hosting representatives
+- Assisted, trained, and lead other shared hosting representatives
 
 - Team point of contact for high priority or high visibility customer issues
