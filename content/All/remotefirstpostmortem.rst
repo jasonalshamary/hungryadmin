@@ -176,9 +176,13 @@ didn't provide any return which I wasn't expecting. Let's look at the
 cost breakdown here in terms of hours and money spent:
 
 Hosting: $5/month (10 months) - $50
+
 Google Apps: $5/month (10 months) - $50
+
 Domain Registration: $15.50 - $15.50
+
 Logo Design: $200 - $200
+
 Advertising: $52.06 - $52.06
 
 Total: $367.56
@@ -203,10 +207,10 @@ relevant plus they included sensitive data that I didn't feel like going
 back through to prune. 
 
 You can review the site code here:
-github.com/gravyboat/remote-first 
+https://github.com/gravyboat/remote-first 
 
 and the salt based deployment code here:
-github.com/gravyboat/remote-first-salt. 
+https://github.com/gravyboat/remote-first-salt. 
 
 If either of these repos benefit you in some way I'd love to know, and
 if you somehow make a bunch of money feel free to throw some my way.
