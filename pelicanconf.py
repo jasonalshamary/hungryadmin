@@ -17,7 +17,7 @@ TRANSLATION_FEED_ATOM = None
 
 # Blogroll
 LINKS = (('Gratipay', 'https://gratipay.com/~gravyboat/'),
-         ('Remote-First (my job site)', 'https://remote-first.com/'),
+        ('Gumroad', 'https://gumroad.com/gravyboat'),
          )
 
 # Social widget
