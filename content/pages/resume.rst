@@ -44,6 +44,27 @@ Professional Experience
 
 .. class:: center
 
+**Pressed Platform, June 2016 - Present**
+
+Senior Systems Architect
+
+- Create custom Datadog plugins to report additional information on mulitple
+  services to provide additional actionable insights.
+
+- Improve and refine monitoring throughout the environment resulting in fewer
+  false alarms, as well as more accurate and detailed alarms.
+
+- Design and work with development team to implement a backup solution which
+  allows customers to restore historical as well as live content while ensuring
+  minimal system impact and optimized storage costs.
+
+- Deploy environment wide mitigation tools to reduce malicious attack vectors
+  against customers.
+
+- Technologies: AWS (S3, RDS, EC2, Route 53, Lambda, CloudFormation, IAM, EFS
+  SQS, VPC, CloudTrail), Ruby, Bash, Python, Git, Vagrant, Docker, SaltStack,
+  Datadog, Nginx, HAProxy
+
 **Kissmetrics, October 2014 - October 2015**
 
 Operations Engineer
