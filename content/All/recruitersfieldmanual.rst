@@ -21,6 +21,7 @@ If you know a recruiter that could use some help I'm currently discounting the
 book from $4.99 to $3.99 as the minimum purchase price if you use the code:
 'blogdollar'.
 
-<script src="https://gumroad.com/js/gumroad-embed.js"></script>
-<div class="gumroad-product-embed" data-gumroad-product-id="nZdiH">
-<a href="https://gumroad.com/l/nZdiH">Loading...</a></div>
+.. raw:: html
+  <script src="https://gumroad.com/js/gumroad-embed.js"></script>
+  <div class="gumroad-product-embed" data-gumroad-product-id="nZdiH">
+  <a href="https://gumroad.com/l/nZdiH">Loading...</a></div>
