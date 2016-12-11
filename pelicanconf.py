@@ -19,6 +19,8 @@ TRANSLATION_FEED_ATOM = None
 LINKS = (('Gratipay', 'https://gratipay.com/~gravyboat/'),
         ('Gumroad', 'https://gumroad.com/gravyboat'),
          )
+# Books
+BOOKs = (('The IT Recruiter\'s Field Manual', 'https://gumroad.com/l/nZdiH'),)
 
 # Social widget
 SOCIAL = (('github', 'https://github.com/gravyboat'),
@@ -48,5 +50,4 @@ EXTRA_PATH_METADATA = {
 # Other
 PLUGINS = ['minification']
 GITHUB_URL = 'https://github.com/gravyboat'
-MENUITEMS = (('Talks', 'https://speakerdeck.com/gravyboat'),
-             ('Gratipay', 'https://gratipay.com/~gravyboat/'),)
+MENUITEMS = (('Talks', 'https://speakerdeck.com/gravyboat'),)
