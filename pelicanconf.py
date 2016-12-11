@@ -18,7 +18,8 @@ TRANSLATION_FEED_ATOM = None
 # Blogroll
 LINKS = (('Gratipay', 'https://gratipay.com/~gravyboat/'),
         ('Gumroad', 'https://gumroad.com/gravyboat'),
-         )
+        ('The IT Recruiter\'s Field Manual', 'https://gumroad.com/l/nZdiH'),
+        )
 # Books
 BOOKS = (('The IT Recruiter\'s Field Manual', 'https://gumroad.com/l/nZdiH'),)
 
@@ -34,7 +35,7 @@ DEFAULT_PAGINATION = 10
 # Uncomment following line if you want document-relative URLs when developing
 # RELATIVE_URLS = True
 
-PAGE_DIR = ('content/pages')
+PAGE_PATHS = ('content/pages')
 
 # Theme
 THEME = "themes/pelican-bootstrap3"
