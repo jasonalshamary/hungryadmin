@@ -20,7 +20,7 @@ LINKS = (('Gratipay', 'https://gratipay.com/~gravyboat/'),
         ('Gumroad', 'https://gumroad.com/gravyboat'),
          )
 # Books
-BOOKs = (('The IT Recruiter\'s Field Manual', 'https://gumroad.com/l/nZdiH'),)
+BOOKS = (('The IT Recruiter\'s Field Manual', 'https://gumroad.com/l/nZdiH'),)
 
 # Social widget
 SOCIAL = (('github', 'https://github.com/gravyboat'),
