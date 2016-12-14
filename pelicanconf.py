@@ -48,4 +48,5 @@ STATIC_PATHS = ['extra/custom.css', 'images']
 PLUGINS = ['minification']
 GITHUB_URL = 'https://github.com/gravyboat'
 MENUITEMS = (('Talks', 'https://speakerdeck.com/gravyboat'),)
-READERS = {'html': None, 'README.rst': None}
+READERS = {'html': None}
+IGNORE_FILES = ['README.rst']
