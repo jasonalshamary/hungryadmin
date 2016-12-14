@@ -49,4 +49,4 @@ PLUGINS = ['minification']
 GITHUB_URL = 'https://github.com/gravyboat'
 MENUITEMS = (('Talks', 'https://speakerdeck.com/gravyboat'),)
 READERS = {'html': None}
-IGNORE_FILES = ['README.rst']
+IGNORE_FILES = ['README.rst', 'LISEZ-MOI.rst']
