@@ -32,7 +32,7 @@ DEFAULT_PAGINATION = 10
 # Uncomment following line if you want document-relative URLs when developing
 # RELATIVE_URLS = True
 
-PAGE_PATHS = ['pages']
+PAGE_PATHS = ['content/pages']
 
 # Theme
 THEME = "themes/pelican-themes/pelican-bootstrap3"
