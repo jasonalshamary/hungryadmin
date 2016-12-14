@@ -43,11 +43,9 @@ PYGMENTS_STYLE = 'solarizeddark'
 # Custom css
 CUSTOM_CSS = 'static/custom.css'
 STATIC_PATHS = ['extra/custom.css', 'images']
-#EXTRA_PATH_METADATA = {
-#        'extra/custom.css': {'path': 'static/custom.css'}
-#}
 
 # Other
 PLUGINS = ['minification']
 GITHUB_URL = 'https://github.com/gravyboat'
 MENUITEMS = (('Talks', 'https://speakerdeck.com/gravyboat'),)
+READERS = {'html': None}
