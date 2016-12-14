@@ -32,10 +32,10 @@ DEFAULT_PAGINATION = 10
 # Uncomment following line if you want document-relative URLs when developing
 # RELATIVE_URLS = True
 
-PAGE_DIR = ('content/pages')
+PAGE_PATHS = ('pages')
 
 # Theme
-THEME = "themes/pelican-bootstrap3"
+THEME = "themes/pelican-themes/pelican-bootstrap3"
 # Code block theme
 PYGMENTS_STYLE = 'solarizeddark'
 # Custom css
