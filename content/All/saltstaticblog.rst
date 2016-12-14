@@ -947,3 +947,6 @@ init.sls  pip.sls  requirements.txt  virtualenv.sls
 init.sls  sshd_config
 
 Ok great, so we've not got the basics of a blog ready to go. All I have to do for my Pelican blog is create my posts, build it, and then push it to github. Then run Salt and my server is ready to go! I hope this helped you out!
+
+Edit 2016-12-13: There have been some changes over the past couple of years,
+make sure to check the repo for the latest release of the code.
