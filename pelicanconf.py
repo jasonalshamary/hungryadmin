@@ -36,7 +36,7 @@ PAGE_PATHS = ['pages']
 
 # Theme
 THEME = "themes/pelican-themes/pelican-bootstrap3"
-#JINJA_EXTENSIONS = ['jinja2.ext.i18n']
+JINJA_EXTENSIONS = ['jinja2.ext.i18n']
 
 # Code block theme
 PYGMENTS_STYLE = 'solarizeddark'
