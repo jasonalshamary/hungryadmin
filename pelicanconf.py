@@ -16,10 +16,10 @@ CATEGORY_FEED_ATOM = None
 TRANSLATION_FEED_ATOM = None
 
 # Blogroll
-LINKS = (('Gratipay', 'https://gratipay.com/~gravyboat/'),
-        ('Flattr', 'https://flattr.com/profile/gravyboat'),
-        ('IT Recruiter\'s Field Manual', 'https://gumroad.com/l/nZdiH'),
-        ('Gumroad', 'https://gumroad.com/gravyboat'),
+LINKS = (('Flattr', 'https://flattr.com/profile/gravyboat'),
+         ('Gratipay', 'https://gratipay.com/~gravyboat/'),
+         ('IT Recruiter\'s Field Manual', 'https://gumroad.com/l/nZdiH'),
+         ('Gumroad', 'https://gumroad.com/gravyboat'),
         )
 
 # Social widget
