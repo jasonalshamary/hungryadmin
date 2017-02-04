@@ -16,16 +16,16 @@ CATEGORY_FEED_ATOM = None
 TRANSLATION_FEED_ATOM = None
 
 # Blogroll
-LINKS = (('Flattr', 'https://flattr.com/profile/gravyboat'),
+LINKS = (('Bandcamp', 'https://bandcamp.com/metalfunk'),
+         ('Flattr', 'https://flattr.com/profile/gravyboat'),
          ('Gratipay', 'https://gratipay.com/~gravyboat/'),
-         ('IT Recruiter\'s Field Manual', 'https://gumroad.com/l/nZdiH'),
          ('Gumroad', 'https://gumroad.com/gravyboat'),
+         ('IT Recruiter\'s Field Manual', 'https://gumroad.com/l/nZdiH'),
         )
 
 # Social widget
 SOCIAL = (('github', 'https://github.com/gravyboat'),
           ('twitter', 'https://twitter.com/failvarez'),
-          ('stack-overflow', 'http://stackoverflow.com/users/1263015/forrest'),
           )
 
 
