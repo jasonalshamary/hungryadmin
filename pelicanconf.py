@@ -17,6 +17,7 @@ TRANSLATION_FEED_ATOM = None
 
 # Blogroll
 LINKS = (('Bandcamp', 'https://bandcamp.com/metalfunk'),
+         ('Bitcoin donation', 'https://blockchain.info/qr?data=1PpdFh9LkTsjtG2AAcrWqk6RiFrC2iTCxj'),
          ('Flattr', 'https://flattr.com/profile/gravyboat'),
          ('Gratipay', 'https://gratipay.com/~gravyboat/'),
          ('Gumroad', 'https://gumroad.com/gravyboat'),
