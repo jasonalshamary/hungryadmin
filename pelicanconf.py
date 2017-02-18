@@ -48,7 +48,7 @@ CUSTOM_CSS = 'static/custom.css'
 STATIC_PATHS = ['extra/custom.css', 'images']
 
 # Other
-PLUGINS = ['minification']
+PLUGINS = ['minification', 'assets']
 GITHUB_URL = 'https://github.com/gravyboat'
 MENUITEMS = (('Talks', 'https://speakerdeck.com/gravyboat'),)
 READERS = {'html': None}
