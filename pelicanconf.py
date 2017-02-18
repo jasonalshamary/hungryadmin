@@ -36,6 +36,7 @@ DEFAULT_PAGINATION = 10
 # RELATIVE_URLS = True
 
 PAGE_PATHS = ['content/pages']
+PLUGIN_PATHS = ['themes/pelican-plugins']
 
 # Theme
 THEME = "themes/pelican-themes/pelican-bootstrap3"
