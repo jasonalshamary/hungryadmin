@@ -36,7 +36,6 @@ DEFAULT_PAGINATION = 10
 # RELATIVE_URLS = True
 
 PAGE_PATHS = ['content/pages']
-PLUGIN_PATHS = ['themes/pelican-plugins']
 
 # Theme
 THEME = "themes/pelican-themes/pelican-bootstrap3"
@@ -49,7 +48,7 @@ CUSTOM_CSS = 'static/custom.css'
 STATIC_PATHS = ['extra/custom.css', 'images']
 
 # Other
-PLUGINS = ['minification', 'assets']
+PLUGINS = ['minification']
 GITHUB_URL = 'https://github.com/gravyboat'
 MENUITEMS = (('Talks', 'https://speakerdeck.com/gravyboat'),)
 READERS = {'html': None}
