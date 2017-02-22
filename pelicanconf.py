@@ -39,7 +39,7 @@ PAGE_PATHS = ['content/pages']
 
 # Theme
 THEME = "themes/pelican-themes/pelican-bootstrap3"
-BOOTSTRAP_THEME = "darkly"
+BOOTSTRAP_THEME = "superhero"
 
 # Code block theme
 PYGMENTS_STYLE = 'solarizeddark'
