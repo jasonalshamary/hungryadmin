@@ -39,7 +39,7 @@ PAGE_PATHS = ['content/pages']
 
 # Theme
 THEME = "themes/pelican-themes/pelican-bootstrap3"
-BOOTSTRAP_THEME = "yeti"
+BOOTSTRAP_THEME = "slate"
 
 # Code block theme
 PYGMENTS_STYLE = 'solarizeddark'
