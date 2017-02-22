@@ -39,7 +39,7 @@ PAGE_PATHS = ['content/pages']
 
 # Theme
 THEME = "themes/pelican-themes/pelican-bootstrap3"
-BOOTSTRAP_THEME = "slate"
+BOOTSTRAP_THEME = "sandstone"
 
 # Code block theme
 PYGMENTS_STYLE = 'solarizeddark'
