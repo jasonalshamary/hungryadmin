@@ -21,7 +21,6 @@ LINKS = (('Bandcamp', 'https://bandcamp.com/metalfunk'),
          ('Flattr', 'https://flattr.com/profile/gravyboat'),
          ('Gratipay', 'https://gratipay.com/~gravyboat/'),
          ('Gumroad', 'https://gumroad.com/gravyboat'),
-         ('IT Recruiter\'s Field Manual', 'https://gumroad.com/l/nZdiH'),
         )
 
 # Social widget
