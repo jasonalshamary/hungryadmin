@@ -1,8 +1,10 @@
 Setting the TZ Variable for Systemd
 ====================================
+:date: 2017-02-23
+:tags: timezone, systemd
 
 Earlier this week I read an `interesting blog post from
-packagecloud.io https://blog.packagecloud.io/eng/2017/02/21/set-environment-variable-save-thousands-of-system-calls/>`_
+packagecloud.io <https://blog.packagecloud.io/eng/2017/02/21/set-environment-variable-save-thousands-of-system-calls/>`_
 talking about some testing they had done to set the TZ environment variable
 to reduce system calls. I thought this was a great idea for users who wanted
 to set their environment variable for a specific script or process and wanted
