@@ -27,8 +27,8 @@ Prior to daemon reload:
 
   root@test-system:/srv/tz-test$ systemctl status tz-test
   tz-test.service
-      Loaded: loaded (/etc/systemd/system/tz-test.service; static; vendor preset: enabled)
-      Active: inactive (dead)
+  Loaded: loaded (/etc/systemd/system/tz-test.service; static; vendor preset: enabled)
+  Active: inactive (dead)
   
   Feb 23 17:37:20 strace[22922]: 17:37:20.616113 stat("/etc/localtime", {st_mode=S_IFREG|0644, st_siz
   Feb 23 17:37:20 strace[22922]: 17:37:20.616167 stat("/etc/localtime", {st_mode=S_IFREG|0644, st_siz
@@ -48,8 +48,8 @@ After reloading the daemon and starting the service:
   root@test-system:/srv/tz-test$ systemctl start tz-test
   root@test-system:/srv/tz-test$ systemctl status tz-test
   tz-test.service
-      Loaded: loaded (/etc/systemd/system/tz-test.service; static; vendor preset: enabled)
-      Active: inactive (dead)
+  Loaded: loaded (/etc/systemd/system/tz-test.service; static; vendor preset: enabled)
+  Active: inactive (dead)
 
   Feb 23 17:38:48 strace[23293]: 17:38:48.003900 fstat(3, {st_mode=S_IFREG|0644, st_size=127, ...}) =
   Feb 23 17:38:48 strace[23293]: 17:38:48.003936 read(3, "TZif2\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\1
