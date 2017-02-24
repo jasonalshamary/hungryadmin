@@ -3,6 +3,9 @@ Setting the TZ Variable for Systemd
 :date: 2017-02-23
 :tags: timezone, systemd
 
+.. role:: bash(code)
+   :language: bash
+
 Earlier this week I read an `interesting blog post from
 packagecloud.io <https://blog.packagecloud.io/eng/2017/02/21/set-environment-variable-save-thousands-of-system-calls/>`_
 talking about some testing they had done to set the TZ environment variable
@@ -12,13 +15,13 @@ to take it further. Automatically applying it to every systemd process that
 started made the most sense for the next step. In my case this wasn't an issue
 since every service uses UTC by default, and it's set the same across every
 server that I manage. This changed required a modification to the
-`/etc/systemd/system.conf` file on an Ubuntu 16 system. Inside of the
-`system.conf` there's a line that reads `DefaultEnvironment`. The line is
-commented out by default so you can either uncomment it, or just add it to
+:code:`/etc/systemd/system.conf` file on an Ubuntu 16 system. Inside of the
+:code:`system.conf` there's a line that reads :code:`DefaultEnvironment`. The
+line is commented out by default so you can either uncomment it, or just add it to
 the bottom of the file. This line should be changed to:
-`DefaultEnvironment=TZ=:/etc/localtime`. By modifying this and reloading the
-systemd daemon via `systemctl daemon-reload` you can apply this change to every
-service on the system automatically when they start. If you turn the code
+:code:`DefaultEnvironment=TZ=:/etc/localtime`. By modifying this and reloading the
+systemd daemon via :code:`systemctl daemon-reload` you can apply this change to
+every service on the system automatically when they start. If you turn the code
 provided by the packagecloud.io team into a service you can see how it's
 impacted:
 
