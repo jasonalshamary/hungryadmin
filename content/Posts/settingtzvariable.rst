@@ -24,6 +24,7 @@ impacted:
 
 Prior to daemon reload:
 .. code-block:: bash
+
   root@test-system:/srv/tz-test$ systemctl status tz-test
   tz-test.service
      Loaded: loaded (/etc/systemd/system/tz-test.service; static; vendor preset: enabled)
@@ -42,6 +43,7 @@ Prior to daemon reload:
 
 After reloading the daemon and starting the service:
 .. code-block:: bash
+  
   root@test-system:/srv/tz-test$ systemctl daemon-reload
   root@test-system:/srv/tz-test$ systemctl start tz-test
   root@test-system:/srv/tz-test$ systemctl status tz-test
