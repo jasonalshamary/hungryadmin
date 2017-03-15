@@ -48,8 +48,11 @@ Professional Experience
 
 Senior Systems Architect
 
+- Devise multiple methods by which to reduce mail spam and decrease associated
+  billing expenses.
+
 - Create custom Datadog plugins to report additional information on mulitple
-  services to provide additional actionable insights.
+  services to provide actionable insights.
 
 - Improve and refine monitoring throughout the environment resulting in fewer
   false alarms, as well as more accurate and detailed alarms.
