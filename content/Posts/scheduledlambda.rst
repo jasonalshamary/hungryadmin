@@ -11,7 +11,7 @@ This process was pretty easy to set up and required configuration within
 Cloudwatch and Lambda. I was communicating with an existing SQS queue which was
 hooked up to a listening service which I won't go into here.
 
-Setting up Lambda first was required to make sure the job could be triggered
+Setting up Lambda first was a requirement to make sure the job could be triggered
 from Cloudwatch successfully, as you can't set up the cloudwatch event until
 the Lambda function exists.
 
@@ -20,7 +20,7 @@ Lambda Configuration
 
 Begin by creating a new Lambda function and pasting the following code into
 the code section (or upload it with Apex, whatever you may use) with the
-appropriate changes to the `region_name`, `QueueName` primary message attribute
+appropriate changes to the `region_name`, `QueueName`, primary message attributes
 (currently called `service_class`), and `StringValue`:
 
 .. code-block:: python
@@ -69,7 +69,7 @@ and create a new rule within `Events`. Once on the configuration page you'll
 want to select `Schedule` for the event source, and then enter the appropriate
 cron expression depending on when you want your function to run. Set your
 target to the Lambda function you created, set any additional options you might
-need (which you most likely won't since this is a single message) and then save
+need (which you most likely won't since this is a single message), and then save
 the rule. From here you can confirm things are working as expected by reviewing
 the Cloudwatch logs that are created when the job runs.
 
