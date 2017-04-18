@@ -5,7 +5,7 @@ Vegetarian Meats Just aren't Cutting it Yet
 
 Over the past few years I've been trying to eat more and more vegetarian meals
 both to reduce how much meat I eat and reduce costs. Bulking and cutting for
-physical fitness are expensive endeavors, so any time I can I want to explore
+physical fitness is an expensive endeavor, so any time I can I want to explore
 these potential options. I've been making things with ground
 meat substitutes for a while now and I generally like them. There have been
 more and more companies coming out with products, and they're a decent
