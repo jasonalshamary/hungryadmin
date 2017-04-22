@@ -3,7 +3,7 @@ Scheduled Lambda SQS Message Function With Cloudwatch
 :date: 2017-04-17
 :tags: AWS, Lambda, Cloudwatch, Python
 
-Recently I wanted to created a schdeduled Lambda event that would send a
+Recently I wanted to created a scheduled Lambda event that would send a
 message to an SQS queue. I ended up using Cloudwatch to trigger a Python based
 Lambda event that would make a call to the appropriate queue.
 
