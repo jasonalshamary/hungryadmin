@@ -1,4 +1,4 @@
-Vegetarian Meats Just aren't Cutting it Yet
+Vegetarian Meats Just Aren't Cutting it Yet
 ===========================================
 :date: 2017-04-13
 :tags: cooking, food
