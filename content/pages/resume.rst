@@ -66,7 +66,7 @@ Senior Systems Architect
 
 - Technologies: AWS (S3, RDS, EC2, Route 53, Lambda, CloudFormation, IAM, EFS
   SQS, VPC, CloudTrail), Ruby, Bash, Python, Git, Vagrant, Docker, SaltStack,
-  Datadog, Nginx, HAProxy
+  Datadog, Nginx, HAProxy, Redis, Varnish
 
 **Kissmetrics, October 2014 - October 2015**
 
