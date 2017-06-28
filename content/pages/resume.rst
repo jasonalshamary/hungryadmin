@@ -19,7 +19,7 @@ Proficiencies
 =============
 
 - Linux systems (CentOS, RHEL, Ubuntu, Debian)
-- Scripting skills (Python)
+- Scripting skills (Python, Ruby)
 - RPM/deb creation
 - Troubleshooting / Root cause analysis
 - Critical production service environments
@@ -48,6 +48,12 @@ Professional Experience
 
 Senior Systems Architect
 
+- Build a WordPress plugin that allows for banning of specific disallowed
+  plugins.
+
+- Implement interface improvements to increase speed at which Support can deal
+  with specific issues and avoid creating escalation tickets.
+
 - Devise multiple methods by which to reduce mail spam and decrease associated
   billing expenses.
 
@@ -65,8 +71,8 @@ Senior Systems Architect
   against customers.
 
 - Technologies: AWS (S3, RDS, EC2, Route 53, Lambda, CloudFormation, IAM, EFS
-  SQS, VPC, CloudTrail), Ruby, Bash, Python, Git, Vagrant, Docker, SaltStack,
-  Datadog, Nginx, HAProxy, Redis, Varnish
+  SQS, VPC, CloudTrail), Ruby, Ruby on Rails, Bash, Python, Git, Vagrant,
+  Docker, SaltStack, Datadog, Nginx, HAProxy, Redis, Varnish
 
 **Kissmetrics, October 2014 - October 2015**
 
