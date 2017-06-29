@@ -9,9 +9,9 @@ Resume
 
 **DevOps Engineer**
 
-Open source advocate, SaltStack contributor, and documentation fanatic.
-Dedicated to improving development pipelines and processes to help both
-developers and community members attain their goals.
+Open source advocate, SaltStack contributor, Streamlink maintainer, and
+documentation fanatic. Dedicated to improving development pipelines and
+processes to help both developers and community members attain their goals.
 
 .. class:: center
 
