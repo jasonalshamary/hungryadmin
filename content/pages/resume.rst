@@ -57,7 +57,7 @@ Senior Systems Architect
 - Devise multiple methods by which to reduce mail spam and decrease associated
   billing expenses.
 
-- Create custom Datadog plugins to report additional information on mulitple
+- Create custom Datadog plugins to report additional information on multiple
   services to provide actionable insights.
 
 - Improve and refine monitoring throughout the environment resulting in fewer
