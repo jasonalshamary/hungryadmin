@@ -70,9 +70,10 @@ Senior Systems Architect
 - Deploy environment wide mitigation tools to reduce malicious attack vectors
   against customers.
 
-- Technologies: AWS (S3, RDS, EC2, Route 53, Lambda, CloudFormation, IAM, EFS
-  SQS, VPC, CloudTrail), Ruby, Ruby on Rails, Bash, Python, Git, Vagrant,
-  Docker, SaltStack, Datadog, Nginx, HAProxy, Redis, Varnish
+- Technologies: AWS (S3, RDS, EC2, Route 53, Lambda, CloudFormation, IAM,
+  Aurora, EFS SQS, VPC, CloudTrail), Ruby, Ruby on Rails, Bash, Python,
+  Git, Vagrant, Docker, SaltStack, Datadog, Nginx, HAProxy, Redis, Varnish,
+  MySQL, PHP
 
 **Kissmetrics, October 2014 - October 2015**
 
