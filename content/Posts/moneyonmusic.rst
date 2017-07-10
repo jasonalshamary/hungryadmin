@@ -21,9 +21,9 @@ what I really want to listen to. I've found that making these difficult
 decisions for what truly stands out to me each month is much more satisfying
 for the space I am in mentally. Every month the albums I purchase directly
 reflect the mood I'm currently in. I've found myself continually
-going back to certain genres and artists month after month to support them
-even though there are other fantastic releases so that trend is interesting
-to see.
+going back to certain genres and artists month after month even though there
+are other fantastic releases. This creates an interesting trend where I can
+almost map out my shifting musical preferences over the last year..
 
 The main downside to this process has been that my wishlist of music grows
 far faster than my purchasing budget allows. I still have releases
