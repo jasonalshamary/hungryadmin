@@ -163,7 +163,7 @@ Linux Systems Engineer - Information Systems
   and pushed for open source contributions
 
 - Familiar with working in a satellite office and interacting with team
-  members distributed throughout multiple office locations and timezones
+  members distributed throughout multiple office locations and time zones
 
 - Technologies: MySQL, Puppet, Python, PHP, C, Bash, Git, SVN, CVS
 
