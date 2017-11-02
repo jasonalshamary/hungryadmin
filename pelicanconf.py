@@ -19,8 +19,6 @@ TRANSLATION_FEED_ATOM = None
 LINKS = (('Bandcamp', 'https://bandcamp.com/metalfunk'),
          ('Bitcoin tip', 'https://blockchain.info/qr?data=1PpdFh9LkTsjtG2AAcrWqk6RiFrC2iTCxj'),
          ('Bulk Eats', 'https://bulkeats.com'),
-         ('Flattr', 'https://flattr.com/profile/gravyboat'),
-         ('Gratipay', 'https://gratipay.com/~gravyboat/'),
          ('Gumroad', 'https://gumroad.com/gravyboat'),
         )
 
