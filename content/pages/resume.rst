@@ -19,12 +19,13 @@ Proficiencies
 =============
 
 - Linux systems (CentOS, RHEL, Ubuntu, Debian)
-- Scripting skills (Python, Ruby)
+- Scripting/programming skills (Python, Ruby)
 - RPM/deb creation
 - Troubleshooting / Root cause analysis
 - Critical production service environments
 - 24x7 support
 - Configuration management (Salt)
+- Cloud based architecture (AWS, DO, etc.) implementation and design
 
 
 .. class:: center
@@ -44,7 +45,7 @@ Professional Experience
 
 .. class:: center
 
-**Pressed Platform, June 2016 - Present**
+**Envato (previously Pressed Platform, acquired), June 2016 - Present**
 
 Senior Systems Architect
 
