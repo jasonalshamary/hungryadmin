@@ -47,7 +47,7 @@ Professional Experience
 
 **Envato (previously Pressed Platform, acquired), June 2016 - Present**
 
-Senior Systems Architect
+Site Reliability Engineer
 
 - Build a WordPress plugin that allows for banning of specific disallowed
   plugins.
