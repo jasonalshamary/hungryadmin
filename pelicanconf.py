@@ -19,12 +19,13 @@ TRANSLATION_FEED_ATOM = None
 LINKS = (('Bandcamp', 'https://bandcamp.com/metalfunk'),
          ('Bitcoin tip', 'https://blockchain.info/qr?data=1PpdFh9LkTsjtG2AAcrWqk6RiFrC2iTCxj'),
          ('Bulk Eats', 'https://bulkeats.com'),
+         ('GitHub', 'https://github.com/gravyboat'),
          ('Gumroad', 'https://gumroad.com/gravyboat'),
         )
 
 # Social widget
-SOCIAL = (('github', 'https://github.com/gravyboat'),
-          )
+#SOCIAL = (('github', 'https://github.com/gravyboat'),
+#          )
 
 
 DEFAULT_PAGINATION = 10
