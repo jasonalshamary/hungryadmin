@@ -24,7 +24,6 @@ LINKS = (('Bandcamp', 'https://bandcamp.com/metalfunk'),
 
 # Social widget
 SOCIAL = (('github', 'https://github.com/gravyboat'),
-          ('twitter', 'https://twitter.com/failvarez'),
           )
 
 
