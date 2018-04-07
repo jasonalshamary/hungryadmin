@@ -3,14 +3,13 @@ Book Reviews - February
 :date: 2018-03-01
 :tags: books
 
-I've been trying to read more recently and finished about 18 books last year.
-I am aiming for 4 books a month this year. This month I only finished 2 books
-and both of those were completed in the first week of February. I'll discuss
-the other books I didn't finish as well since there were 2 of them. This was
-a pretty bad month simply because I read a couple of books that weren't
-enjoyable and felt that my time was wasted which I hate doing when I read.
-Previously I gave books 100 pages for the story to get going and interest to
-be established and I'm going to drop that to 50 going forward.
+This month I only finished 2 books and both of those were completed in the
+first week of February. I'll discuss the other books I didn't finish as well
+since there were 2 of them. This was a pretty bad month simply because I read
+a couple of books that weren't enjoyable and felt that my time was wasted
+which I hate doing when I read. Previously I gave books 100 pages for the
+story to get going and interest to be established and I'm going to drop that
+to 50 going forward.
 
 The Collapsing Empire
 ---------------------

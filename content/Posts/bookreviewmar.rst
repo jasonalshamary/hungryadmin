@@ -3,11 +3,9 @@ Book Reviews - March
 :date: 2018-04-06
 :tags: books
 
-I've been trying to read more and finished about 18 books last year.
-I'm aiming for 4 books a month this year. In March I finished 4 books and
-met my goal. Part of this was sticking to my rule that if I'm not pulled in by
-the 50th page I put it down and move on, and part of it was simply selecting
-better books.
+In March I finished 4 books and met my goal. Part of this was sticking to my
+rule that if I'm not pulled in by the 50th page I put it down and move on,
+and part of it was simply selecting better books.
 
 The Three-Body Problem
 ----------------------
