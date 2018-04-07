@@ -5,7 +5,8 @@ Book Reviews - March
 
 In March I finished 4 books and met my goal. Part of this was sticking to my
 rule that if I'm not pulled in by the 50th page I put it down and move on,
-and part of it was simply selecting better books.
+and part of it was simply selecting better books. I also read one book that
+I ended up putting down which I will include here.
 
 The Three-Body Problem
 ----------------------
