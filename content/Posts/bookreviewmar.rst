@@ -3,7 +3,7 @@ Book Reviews - March
 :date: 2018-04-06
 :tags: books
 
-In March I finished 4 books and met my goal. Part of this was sticking to my
+In March I finished 5 books and met my goal. Part of this was sticking to my
 rule that if I'm not pulled in by the 50th page I put it down and move on,
 and part of it was simply selecting better books. I also read one book that
 I ended up putting down which I will include here.
@@ -47,6 +47,15 @@ ways while staying on track and putting you in a good spot for seeing her
 again in Oathbringer. I would definitely recommend people listen to or read
 Edgedancer before Oathbringer and I wish I had known about it as I would have
 done so.
+
+We Are Legion (We Are Bob)
+--------------------------
+
+An interesting take on cryogenics and where it might lead tied in with a
+sci-fi plot of digital cloning and expansion. I enjoyed this more towards the
+beginning than where it progressed to later in the book. I probably won't read
+the second in the series but it wasn't a bad book, it just wasn't to my tastes
+after some time.
 
 The Rise and Fall of D.O.D.O
 ----------------------------
