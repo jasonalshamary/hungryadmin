@@ -4,7 +4,10 @@ Book Reviews - May
 :tags: books
 
 I only finished two books in May due to being busy in my personal life, but am
-satisfied with what I read. Hopefully June will be more productive.
+satisfied with what I read. Hopefully June will be more productive as I have a
+few shorter books in my queue, but there's also a few longer ones. I also need
+to make sure I keep up on placing holds from the library in the event a book
+is in high demand.
 
 
 Man's Search For Meaning
