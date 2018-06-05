@@ -45,9 +45,12 @@ Professional Experience
 
 .. class:: center
 
-**Envato (previously Pressed Platform, acquired), June 2016 - Present**
+**Envato (previously Pressed Platform, acquired), June 2016 - May 2018**
 
 Site Reliability Engineer
+
+- Write various bash based automation around configuring server images for
+  automated scaling and deployment.
 
 - Build a WordPress plugin that allows for banning of specific disallowed
   plugins.
