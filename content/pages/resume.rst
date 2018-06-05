@@ -50,7 +50,7 @@ Professional Experience
 Site Reliability Engineer
 
 - Write various bash based automation around configuring server images for
-  automated scaling and deployment.
+  automated scaling and deployment within AWS.
 
 - Build a WordPress plugin that allows for banning of specific disallowed
   plugins.
