@@ -38,9 +38,10 @@ a bit of money because of the mission).
 
 This was when the disappointment set in. He explained the situation, the fact
 they were a non-profit and couldn’t offer west coast style salaries (my
-range was pretty generous in this regard and since they're a non-profit I've
-seen their financials so it wasn't a ridiculous ask), and that the previous
-employee in this position had been making a lot less while living on the west
+range was pretty generous in this regard plus their finances are public so I
+knew it wasn't outside the realm of what is realistic). I was also told that
+the previous employee in this position had been making a lot less than what I
+provided as a reasonable salary while also living on the west
 coast. I was pretty gutted after hearing this. We ended the call a few minutes
 later, and he emailed me a while after that letting me know they couldn’t
 afford the salary I was asking for so we never made it to the actual offer
@@ -48,10 +49,10 @@ stage. This lead me to question what am I willing to sacrifice salary wise for
 the mission and I realized it’s some, but it’s not that much. Sacrificing
 somewhere around 50% - 60% of my old salary just wasn’t something I was
 willing to do. Even if the mission is great organizations have to realize that
-they have to pay well if they want the best talent. Paying poor salaries
+they have to pay well if they to retain passionate talent. Paying poor salaries
 creates resentment among workers and it just means people are going to move on
 relatively quickly. Delaying retirement by an extra 5-15 years because you took
-a lower salary isn’t going to fly with a lot of people, and it certainly isn’t
+a lower salary isn’t going to fly with a lot of people. It certainly isn’t
 going to fly for me no matter how important the mission of the organization
 is.
 
