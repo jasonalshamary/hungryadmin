@@ -37,8 +37,8 @@ great things to hear. Then he asked about my salary range, and I provided it
 a bit of money because of the mission).
 
 This was when the disappointment set in. He explained the situation, the fact
-they were a non-profit and couldn’t offer west coast style salaries (and my
-range was pretty generous in this regard plus since they're a non-profit I've
+they were a non-profit and couldn’t offer west coast style salaries (my
+range was pretty generous in this regard and since they're a non-profit I've
 seen their financials so it wasn't a ridiculous ask), and that the previous
 employee in this position had been making a lot less while living on the west
 coast. I was pretty gutted after hearing this. We ended the call a few minutes
