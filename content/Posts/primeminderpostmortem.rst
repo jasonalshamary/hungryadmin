@@ -139,14 +139,14 @@ any other annoying nonsense. All in all a pretty simple site that then hooked
 into Mailchimp for the mailing list portion. Once a user was signed up they
 received the following email:
 
-.. image:: images/example_sign_up_email
+.. image:: images/example_sign_up_email.PNG
     :align: center
 
 It provided a simple condensed confirmation email with a link to support the
 application if people wanted to do so. Every thirty days after users received
 a similar email reminding them to resubscribe:
 
-.. image:: images/example_monthly_email
+.. image:: images/example_monthly_email.PNG
     :align: center
 
 This monthly email was designed to remind users to renew Twitch Prime and it
