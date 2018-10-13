@@ -124,8 +124,10 @@ into two images here to be less jarring) with a sign up section, and a support
 section that provides a variety of ways people can support the project if they
 are interested in doing so:
 
-.. image: images/primeminder_sign_up.PNG
-.. image: images/primeminder_support.PNG
+.. image:: images/primeminder_sign_up.PNG
+    :align: center
+.. image:: images/primeminder_support.PNG
+    :align: center
 
 On mobile it used a condensed version that only required a single swipe to move
 between each section of the application and you are presented with the sign up
@@ -137,13 +139,15 @@ any other annoying nonsense. All in all a pretty simple site that then hooked
 into Mailchimp for the mailing list portion. Once a user was signed up they
 received the following email:
 
-.. image: images/example_sign_up_email
+.. image:: images/example_sign_up_email
+    :align: center
 
 It provided a simple condensed confirmation email with a link to support the
 application if people wanted to do so. Every thirty days after users received
 a similar email reminding them to resubscribe:
 
-.. image: images/example_monthly_email
+.. image:: images/example_monthly_email
+    :align: center
 
 This monthly email was designed to remind users to renew Twitch Prime and it
 specifically didn't take into account or request information about who a user
