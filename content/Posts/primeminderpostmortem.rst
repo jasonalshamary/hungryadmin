@@ -1,4 +1,4 @@
-Primeminder Post Mortem
+Primeminder Postmortem
 =======================
 :date: 2018-10-12
 :tags: open source, Salt, GitHub, bootstrap4, static, html, git, primeminder.com
@@ -8,7 +8,7 @@ list to inform users that I would be shutting down my latest side project
 `Primeminder <https://github.com/gravyboat/primeminder>`_.
 
 I've done one of these
-`post mortems before <https://hungryadmin.com/a-failed-projects-postmortem.html>`_
+`postmortems before <https://hungryadmin.com/a-failed-projects-postmortem.html>`_
 for a side project, and figured since I was shutting down Primeminder I might
 as well do another one since it could be helpful for people who are interested
 in this space and can potentially avoid the pitfalls I encountered. I learned
