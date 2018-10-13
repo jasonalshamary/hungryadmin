@@ -1,7 +1,7 @@
-Mission vs Money vs Morality
-==============================
+Mission vs Money vs Ethics
+==========================
 :date: 2018-10-08
-:tags: remote, employment, morality, money, mission
+:tags: remote, employment, ethics, money, mission
 
 Since I was let go from my job I’ve been back on the job hunt. My goals over
 the last few years have had a pretty simply motto, make as much money as I
@@ -12,13 +12,13 @@ changer. In the past few weeks I’ve gotten to final discussions with a few
 companies regarding salary, or getting the last of my questions answered when
 it came to a questionable organization. I decided it was time to write a
 little bit about this because it’s been a struggle. Constantly interviewing
-with companies sucks, but working for somewhere that is morally questionable
+with companies sucks, but working for somewhere that is ethically questionable
 sucks even more.
 
 As this post is titled it’s recently come down to a few things, the mission of
-the organization, the money they offer, and the morality of what they do.
+the organization, the money they offer, and the ethics of what they do.
 Sometimes the mission is there, but the money isn’t, and sometimes they have
-the money, but I can’t morally work there because of what they do (military
+the money, but I can’t ethically work there because of what they do (military
 contractors, some banks, companies like Comcast, etc.)
 
 A few weeks ago I finished my final interview with an awesome non-profit. I
@@ -59,7 +59,7 @@ is.
 The mission is important, but the money has to be there.
 
 I also declined to continue the negotiation and interview process with a
-startup over moral issues. I had been on the fence due to the questionable
+startup over ethical issues. I had been on the fence due to the questionable
 organizations they allowed to use their product but after talking to their
 CEO I knew the company was not for me. The CEO explained that they would
 allow organizations such as the KKK to use their platform and I simply
@@ -74,7 +74,7 @@ disinterested. I can’t imagine waking up at 2 in the morning to potentially
 protect the KKK from a DDOS, or helping them ensure that their newsletters get
 sent out. How could I look at myself every morning knowing I’m potentially
 helping spread the message of organizations built on hatred and racism? The
-money was decent and the benefits were okay, but the morals just weren’t there
+money was decent and the benefits were okay, but the ethics just weren’t there
 and I don’t understand how anyone who currently works there could continue
 doing so knowing they would allow such an organization to use their services
 or how they could be okay with having that sort of customer. I couldn’t work
@@ -82,12 +82,12 @@ there and I couldn’t live with myself if I did so I had to let the hiring
 manager know that I wasn’t interested in going any further with this
 organization.
 
-The money can be there, but without meeting my moral standards it’s
+The money can be there, but without meeting my ethical standards it’s
 pointless.
 
 At the end of the day I’m still unemployed after getting to the final process
 with these recent organizations. While I’m disappointed I’m also glad that I
-can stay objective enough, and morally just enough to decline offers which
+can stay objective enough, and ethically just enough to decline offers which
 would make me question myself every day. I might not have a paycheck, but I
 haven’t compromised my personal needs or my personal beliefs and that’s what
 really matters to me in the long term.

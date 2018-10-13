@@ -18,7 +18,7 @@ they are selling when they know as much as possible, how much does it pay?
 What are the benefits like? How many on-call incidents are there per week?
 and so forth. Asking questions like these are critical to a good interview, and
 more importantly a job where you'll actually be happy. I've previously linked
-`this repo <https://github.com/gravyboat/interviewee-questions>` on Twitter
+`this repo <https://github.com/gravyboat/interviewee-questions>`_ on Twitter
 that goes in-depth regarding questions that you can ask potential employers
 but I've realized that just isn't enough. Helping recruiters ask the right
 questions is equally important because if they don't get it we're all just
