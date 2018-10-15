@@ -33,13 +33,13 @@ discussion about money. I was hopeful as we had previously talked about
 how they were competitive. The CEO explained their benefits to me, how they
 were willing to be flexible depending on people’s needs and so forth. All
 great things to hear. Then he asked about my salary range, and I provided it
-(and it was lower than my typical range would be as I was willing to sacrifice
-a bit of money because of the mission).
+and it was lower than my typical range would be as I was willing to sacrifice
+a bit of money because of the mission.
 
 This was when the disappointment set in. He explained the situation, the fact
 they were a non-profit and couldn’t offer west coast style salaries (my
 range was pretty generous in this regard plus their finances are public so I
-knew it wasn't outside the realm of what is realistic). I was also told that
+knew it wasn't outside the realm of what was realistic). I was also told that
 the previous employee in this position had been making a lot less than what I
 provided as a reasonable salary while also living on the west
 coast. I was pretty gutted after hearing this. We ended the call a few minutes
@@ -49,12 +49,12 @@ stage. This lead me to question what am I willing to sacrifice salary wise for
 the mission and I realized it’s some, but it’s not that much. Sacrificing
 somewhere around 50% - 60% of my old salary just wasn’t something I was
 willing to do. Even if the mission is great organizations have to realize that
-they have to pay well if they to retain passionate talent. Paying poor salaries
-creates resentment among workers and it just means people are going to move on
-relatively quickly. Delaying retirement by an extra 5-15 years because you took
-a lower salary isn’t going to fly with a lot of people. It certainly isn’t
-going to fly for me no matter how important the mission of the organization
-is.
+they have to pay well if they want to retain passionate talent. Paying poor
+salaries creates resentment among workers and it just means people are going
+to move on relatively quickly. Delaying retirement by an extra 5-15 years
+because you took a lower salary isn’t going to fly with a lot of people. It
+certainly isn’t going to fly for me no matter how important the mission of
+the organization is.
 
 The mission is important, but the money has to be there.
 
