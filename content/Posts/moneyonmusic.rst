@@ -23,13 +23,13 @@ for the space I am in mentally. Every month the albums I purchase directly
 reflect the mood I'm currently in. I've found myself continually
 going back to certain genres and artists month after month even though there
 are other fantastic releases. This creates an interesting trend where I can
-almost map out my shifting musical preferences over the last year..
+almost map out my shifting musical preferences over the last year.
 
 The main downside to this process has been that my wishlist of music grows
 far faster than my purchasing budget allows. I still have releases
 that I would like to own that have been on my wishlist for two years. It's
 also a problem when an artist releases an especially expensive album as I
-would have to spend the entire month's budget on a single album.. Even with
+would have to spend the entire month's budget on a single album. Even with
 this minor downside I'm
 still very pleased with the experience thus far and I realize that $15 a
 month is how much many people spend on coffee in a week so it's fairly low
