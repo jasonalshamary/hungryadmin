@@ -4,7 +4,7 @@ Every Company Should Have a 401(k)
 :tags: books
 
 I've been searching for a job for a while now and there's on benefit that is
-constantly getting overlooked, and that's a 401(k). In the past setting up,
+constantly getting overlooked and that's a 401(k). In the past setting up,
 managing, and running a 401k was difficult or you had to bring in some big
 bank to handle it for you. It was also expensive to administer the plan which
 made it hard for small orgs. This is no longer the case and I believe that
