@@ -75,10 +75,11 @@ it would reduce the amount of times I had to hear "Subscribe with Twitch
 Prime", and since I was the one offering the service I knew it would respect
 user privacy and avoid harvesting their information for malicious means. I was
 hopeful that I could get users to support the service through
-Amazon affiliate links since they were already using Prime. It was unintrusive
-and seemed like a win-win for everyone involved. Streamers made more money,
-users didn't have to stress about checking Twitch Prime, and I could afford
-to run the service with some profit while providing a privacy focused app.
+Amazon affiliate links since they were already using Prime. It was not
+intrusive and seemed like a win-win for everyone involved. Streamers made more
+money, users didn't have to stress about checking Twitch Prime, and I could
+afford to run the service with some profit while providing a privacy focused
+app.
 
 Little did I know that this wouldn't be the case at all.
 
