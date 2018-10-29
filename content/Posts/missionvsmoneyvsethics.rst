@@ -45,7 +45,7 @@ provided as a reasonable salary while also living on the west
 coast. I was pretty gutted after hearing this. We ended the call a few minutes
 later, and he emailed me a while after that letting me know they couldn’t
 afford the salary I was asking for so we never made it to the actual offer
-stage. This lead me to question what am I willing to sacrifice salary wise for
+stage. This lead me to question what I am willing to sacrifice salary wise for
 the mission and I realized it’s some, but it’s not that much. Sacrificing
 somewhere around 50% - 60% of my old salary just wasn’t something I was
 willing to do. Even if the mission is great organizations have to realize that
